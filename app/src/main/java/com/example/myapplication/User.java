@@ -1,9 +1,57 @@
 package com.example.myapplication;
 
+import java.util.Date;
+
 public class User {
     private String username;
 
-    public User(String username){this.username=username;}
+    private String password;
+
+    private String familyName;
+    private String givenName;
+    private String mailAdress;
+
+    public User(String username, String password, String familyName, String givenName, String mailAdress) {
+        this.username = username;
+        this.password = password;
+        this.familyName = familyName;
+        this.givenName = givenName;
+        this.mailAdress = mailAdress;
+    }
+
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public String getGivenName() {
+        return givenName;
+    }
+
+    public void setGivenName(String givenName) {
+        this.givenName = givenName;
+    }
+
+    public String getMailAdress() {
+        return mailAdress;
+    }
+
+    public void setMailAdress(String mailAdress) {
+        this.mailAdress = mailAdress;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public User(String username, String password){this.username=username; this.password=password;}
 
     public User(){
 
