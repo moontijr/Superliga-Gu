@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
                 String givenName = editTextGivenName.getText().toString();
                 String email = editTextMailAdress.getText().toString();
 
+
+                if (!isValidEmail(email)) {
+                    // Show an error message or handle the invalid email case
+                    editTextMailAdress.setError("Enter a valid email address");
+                    return;  // Stop further processing if the email is invalid
+                }
+
                 // Call the method to add the user to the database
                 addUserToDb(username, password, familyName, givenName, email);
 
@@ -124,6 +132,10 @@ public class MainActivity extends AppCompatActivity {
         addUserToDatabase(editTextUsername.getText().toString(),editTextPassword.getText().toString());
     }
 
+    private boolean isValidEmail(CharSequence email) {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
     public void onRegisterButtonClick(View view){
 
         if (popUpDialog != null && popUpDialog.isShowing()) {
@@ -150,6 +162,13 @@ public class MainActivity extends AppCompatActivity {
             String familyName = editTextFamilyName.getText().toString();
             String givenName = editTextGivenName.getText().toString();
             String email = editTextMailAdress.getText().toString();
+
+
+            if (!isValidEmail(email)) {
+                // Show an error message or handle the invalid email case
+                editTextMailAdress.setError("Enter a valid email address");
+                return;  // Stop further processing if the email is invalid
+            }
 
             // Call the method to add the user to the database
             addUserToDb(username, password, familyName, givenName, email);
