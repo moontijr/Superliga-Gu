@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="pentru_c_suntem_super">Pentru că suntem SUPER</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="guru">GURU</string>
 </resources>
