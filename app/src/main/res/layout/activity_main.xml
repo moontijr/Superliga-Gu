@@ -39,12 +39,12 @@
         android:layout_height="42dp"
         android:text="@string/login"
         app:layout_constraintTop_toBottomOf="@id/myImageViewSuperLiga"
-        app:layout_constraintBottom_toTopOf="@id/registerButton"
+        app:layout_constraintBottom_toTopOf="@id/registerPopupButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/registerPopupButton"
         android:layout_width="245dp"
         android:layout_height="43dp"
         android:text="@string/register"

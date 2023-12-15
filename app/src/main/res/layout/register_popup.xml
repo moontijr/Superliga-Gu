@@ -56,11 +56,12 @@
         android:layout_below="@id/Intro"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="126dp"
+        android:layout_marginTop="235dp"
         android:layout_marginRight="22dp"
         android:gravity="center"
         android:hint="Nume de utilizator"
         android:textSize="20sp" />
+
 
     <EditText
         android:id="@+id/Email"
@@ -69,12 +70,11 @@
         android:layout_below="@id/Intro"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="147dp"
         android:layout_marginRight="22dp"
         android:gravity="center"
         android:hint="Adresa de mail"
         android:textSize="20sp" />
-
 
     <EditText
         android:id="@+id/Password"
@@ -83,7 +83,7 @@
         android:layout_below="@id/Intro"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="162dp"
+        android:layout_marginTop="286dp"
         android:layout_marginRight="22dp"
         android:gravity="center"
         android:hint="Parola"
@@ -97,12 +97,13 @@
         android:layout_below="@id/Intro"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="22dp"
-        android:onClick="onRegisterButtonClick"
-        android:layout_marginTop="225dp"
+        android:layout_marginTop="356dp"
         android:layout_marginRight="22dp"
         android:gravity="center"
         android:hint="Inregistreaza-te"
-        android:textSize="20sp" /> />
+        android:onClick="onRegisterButtonClick"
+        android:textSize="20sp" />
+    />
 
 
 </RelativeLayout>
