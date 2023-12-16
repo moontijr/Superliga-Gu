@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".LeaderboardActivity">
+
+    <!-- 1st Place -->
+    <TextView
+        android:id="@+id/firstPlaceTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:textColor="#FFD700"
+    android:background="#8B4513"
+    android:gravity="center"
+    android:layout_marginBottom="8dp"/>
+
+    <!-- 2nd Place -->
+    <TextView
+        android:id="@+id/secondPlaceTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:textColor="#C0C0C0"
+    android:background="#A9A9A9"
+    android:gravity="center"
+    android:layout_marginBottom="8dp"/>
+
+    <!-- 3rd Place -->
+    <TextView
+        android:id="@+id/thirdPlaceTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:textColor="#CD7F32"
+    android:background="#D2B48C"
+    android:gravity="center"
+    android:layout_marginBottom="16dp"/>
+
+    <!-- List of Users -->
+    <ListView
+        android:id="@+id/usersListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"/>
+
+</LinearLayout>

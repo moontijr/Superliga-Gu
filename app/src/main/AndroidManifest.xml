@@ -29,6 +29,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LeaderboardActivity"
+            android:exported="false"/>
+        <activity android:name=".GW1Activity"
+            android:exported="false"/>
+        <activity android:name=".GW2Activity"
+            android:exported="false"/>
+        <activity android:name=".GW3Activity"
+            android:exported="false"/>
+        <activity android:name=".GW4Activity"
+            android:exported="false"/>
+        <activity android:name=".GW5Activity"
+            android:exported="false"/>
+        <activity android:name=".GW6Activity"
+            android:exported="false"/>
+        <activity android:name=".GW7Activity"
+            android:exported="false"/>
+        <activity android:name=".GW8Activity"
+            android:exported="false"/>
     </application>
 
 </manifest>
