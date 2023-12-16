@@ -52,11 +52,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         firebaseAuth = FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser() != null){
+        if (firebaseAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), MatchdaysActivity.class));
             finish();
         }
-
 
         //Register dialog button
         Button registerPopupButton = findViewById(R.id.registerPopupButton);
@@ -66,10 +65,19 @@ public class MainActivity extends AppCompatActivity {
                 showRegisterPopupDialog();
             }
         });
+
+        //Login dialog button
+        Button loginPopupButton = findViewById(R.id.loginPopupButton);
+        loginPopupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLoginPopupDialog();
+            }
+        });
     }
 
     //Register Dialog
-    private void showRegisterPopupDialog(){
+    private void showRegisterPopupDialog() {
         Dialog popupDialog = new Dialog(this);
 
         popupDialog.setContentView(R.layout.register_popup);
@@ -99,29 +107,27 @@ public class MainActivity extends AppCompatActivity {
                     return;  // Stop further processing if the email is invalid
                 }
 
-                if(TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     editTextPassword.setError("Enter a password");
                     return;
                 }
 
                 //Register the user in Firebase
-                firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(MainActivity.this, "New user registered.",Toast.LENGTH_SHORT).show();
+                        if (task.isSuccessful()) {
+                            Toast.makeText(MainActivity.this, "New user registered.", Toast.LENGTH_SHORT).show();
 
                             // Call the method to add the extra user details to the database
                             addUserToDb(username, password, familyName, givenName, email);
 
                             startActivity(new Intent(getApplicationContext(), MatchdaysActivity.class));
-                    }else {
-                            Toast.makeText(MainActivity.this,"Error! "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, "Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
-
 
                 popupDialog.dismiss();
             }
@@ -131,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //Insert extra details of the user
     private void addUserToDb(String username, String password, String familyName, String givenName, String email) {
         User user = new User(username, password, familyName, givenName, email);
 
@@ -143,5 +150,53 @@ public class MainActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> Log.e("Firebase", "Error adding user: " + e.getMessage()));
 
 
+    }
+
+    private void showLoginPopupDialog() {
+        Dialog popupDialog = new Dialog(this);
+
+        popupDialog.setContentView(R.layout.login_popup);
+
+        // Find the EditText views in the popup view
+        EditText editTextEmail = popupDialog.findViewById(R.id.loginEmail);
+        EditText editTextPassword = popupDialog.findViewById(R.id.loginPassword);
+        Button loginAction = popupDialog.findViewById(R.id.loginAction);
+
+        //Set up login action
+        loginAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get values from the EditText fields
+                String email = editTextEmail.getText().toString();
+                String password = editTextPassword.getText().toString();
+
+                if (TextUtils.isEmpty(email)) {
+                    // Show an error message or handle the invalid email case
+                    editTextEmail.setError("Enter a valid email address");
+                    return;  // Stop further processing if the email is invalid
+                }
+
+                if (TextUtils.isEmpty(password)) {
+                    editTextPassword.setError("Enter a password");
+                    return;
+                }
+
+                //Login the user
+                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(MainActivity.this, "User connected.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MatchdaysActivity.class));
+                        }else {
+                            Toast.makeText(MainActivity.this, "Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
+
+        popupDialog.show();
     }
 }

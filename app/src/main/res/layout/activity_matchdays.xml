@@ -63,4 +63,13 @@
         tools:layout_editor_absoluteX="45dp"
         tools:layout_editor_absoluteY="143dp" />
 
+    <ImageView
+        android:id="@+id/signOutButton"
+        android:layout_width="65dp"
+        android:layout_height="41dp"
+        android:onClick="signOut"
+        app:srcCompat="@drawable/signout"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="-2dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
