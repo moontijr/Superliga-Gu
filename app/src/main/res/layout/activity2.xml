@@ -1,4 +1,4 @@
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,18 +6,228 @@
     android:background="#FF0000"
     tools:context=".MainActivity2">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/logoImageView"
-        android:layout_width="55dp"
-        android:layout_height="62dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:clickable="true"
-        android:onClick="onLogoClick"
-        android:src="@drawable/cupa" />
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="55dp"
+            android:layout_height="62dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:onClick="onLogoClick"
+            android:src="@drawable/cupa"
+            android:contentDescription="TODO" />
 
-</RelativeLayout>
+        <!-- Add 10 ImageButton elements as needed -->
+        <ImageButton
+            android:id="@+id/gameweekButton1"
+            android:layout_width="336dp"
+            android:layout_height="74dp"
+            android:layout_below="@id/logoImageView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:onClick="onGameweek1ButtonClick"
+            android:src="@drawable/poza_arena"
+            android:contentDescription="TODO" />
 
+        <TextView
+            android:id="@+id/gw1Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gameweekButton1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="GW1"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/gameweekButton2"
+            android:layout_width="336dp"
+            android:layout_height="74dp"
+            android:layout_below="@id/gw1Label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:onClick="onGameweek2ButtonClick"
+            android:src="@drawable/poza_arena"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/gw2Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gameweekButton2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="GW2"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+
+        <ImageButton
+            android:id="@+id/gameweekButton3"
+            android:layout_width="336dp"
+            android:layout_height="74dp"
+            android:layout_below="@id/gw2Label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:onClick="onGameweek3ButtonClick"
+            android:src="@drawable/poza_arena"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/gw3Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gameweekButton3"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="GW3"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/gameweekButton4"
+            android:layout_width="336dp"
+            android:layout_height="74dp"
+            android:layout_below="@id/gw3Label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:onClick="onGameweek4ButtonClick"
+            android:src="@drawable/poza_arena"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/gw4Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gameweekButton4"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="GW4"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <!-- Add 8 more sets of ImageButton and TextView elements as needed -->
+
+
+        <ImageButton
+            android:id="@+id/gameweekButton5"
+            android:layout_width="336dp"
+            android:layout_height="74dp"
+            android:layout_below="@id/gw4Label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:onClick="onGameweek5ButtonClick"
+            android:src="@drawable/poza_arena"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/gw5Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gameweekButton5"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="GW5"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/gameweekButton6"
+            android:layout_width="336dp"
+            android:layout_height="74dp"
+            android:layout_below="@id/gw5Label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:onClick="onGameweek6ButtonClick"
+            android:src="@drawable/poza_arena"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/gw6Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gameweekButton6"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="GW6"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/gameweekButton7"
+            android:layout_width="336dp"
+            android:layout_height="74dp"
+            android:layout_below="@id/gw6Label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:onClick="onGameweek7ButtonClick"
+            android:src="@drawable/poza_arena"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/gw7Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gw6Label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="GW7"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/gameweekButton8"
+            android:layout_width="336dp"
+            android:layout_height="74dp"
+            android:layout_below="@id/gw7Label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:onClick="onGameweek8ButtonClick"
+            android:src="@drawable/poza_arena"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/gw8Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gw7Label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="GW8"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</ScrollView>
