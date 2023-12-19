@@ -4,12 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.myapplication.model.Match;
+import com.example.myapplication.model.Matchday;
+import com.example.myapplication.model.Team;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MatchdaysActivity extends AppCompatActivity {
 
@@ -24,12 +30,46 @@ public class MatchdaysActivity extends AppCompatActivity {
     private ImageButton buttonGw7;
     private ImageButton buttonGw8;
 
+    DatabaseReference mDatabase;
+    DatabaseReference matchDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matchdays);
         ImageView logoImageView = findViewById(R.id.logoImageView);
+
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("matchdays");
+        matchDatabase = FirebaseDatabase.getInstance().getReference().child("games");
+
+        Matchday demoMatchday=new Matchday("Demo1");
+        Matchday demoMatchday2=new Matchday("Demo2");
+        Match match = new Match("M1","T1","T2",3,0,"Demo1","P1");
+        Match match1 = new Match("M2","T1","T3",2,0,"Demo1","P1");
+        Match match2 = new Match("M3","T3","T2",1,1,"Demo1","P1");
+        Match match3 = new Match("M4","T3","T11",6,1,"Demo1","P1");
+        Match match4 = new Match("M5","T1","T11",6,4,"Demo1","P1");
+        Match match5 = new Match("M6","T10","T1",1,5,"Demo1","P1");
+        Match match6 = new Match("M7","T2","T12",2,0,"Demo1","P1");
+        Match match7 = new Match("M8","T3","T10",5,0,"Demo1","P1");
+        Match match8 = new Match("M9","T13","T2",1,3,"Demo1","P1");
+        Match match9 = new Match("M10","T10","T11",0,2,"Demo1","P1");
+        Match match10 = new Match("M11","T12","T14",1,4,"Demo1","P1");
+        addMatchdayToDatabase(demoMatchday);
+        addMatchdayToDatabase(demoMatchday2);
+        addMatchToDatabase(match);
+        addMatchToDatabase(match1);
+        addMatchToDatabase(match2);
+        addMatchToDatabase(match3);
+        addMatchToDatabase(match4);
+        addMatchToDatabase(match5);
+        addMatchToDatabase(match6);
+        addMatchToDatabase(match7);
+        addMatchToDatabase(match8);
+        addMatchToDatabase(match9);
+        addMatchToDatabase(match10);
         logoImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +133,26 @@ public class MatchdaysActivity extends AppCompatActivity {
             }
         });
     }
+
+        private void addMatchdayToDatabase(Matchday matchday) {
+            mDatabase.child(matchday.getId()).setValue(matchday)
+                    .addOnSuccessListener(aVoid -> {
+                        Log.d("Firebase", "Matchday " + matchday + " added successfully");
+                    })
+                    .addOnFailureListener(e -> {
+                        Log.e("Firebase", "Error adding " + matchday + ": " + e.getMessage());
+                    });
+        }
+
+        private void addMatchToDatabase(Match match){
+            matchDatabase.child(match.getId()).setValue(match)
+                    .addOnSuccessListener(aVoid -> {
+                        Log.d("Firebase", "Match " + match + " added successfully");
+                    })
+                    .addOnFailureListener(e -> {
+                        Log.e("Firebase", "Error adding " + match + ": " + e.getMessage());
+                    });
+        }
 
 
 

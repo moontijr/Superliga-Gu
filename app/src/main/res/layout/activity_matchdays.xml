@@ -199,7 +199,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="GW7"
+            android:text=""
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
@@ -224,7 +224,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="GW8"
+            android:text=""
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
 

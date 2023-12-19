@@ -41,6 +41,7 @@
                 android:src="@drawable/cfr"
                 android:contentDescription="Right Team Logo 1"/>
 
+
             <EditText
                 android:id="@+id/leftTeamGoals1"
                 android:layout_width="wrap_content"
@@ -49,6 +50,7 @@
                 android:hint="Goluri"
                 android:layout_marginStart="8dp"/>
 
+
             <EditText
                 android:id="@+id/rightTeamGoals1"
                 android:layout_width="wrap_content"
@@ -56,6 +58,7 @@
                 android:inputType="number"
                 android:hint="Goluri"
                 android:layout_marginStart="8dp"/>
+
         </LinearLayout>
 
         <!-- More and Submit Buttons for Game 1 -->
@@ -75,7 +78,13 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"/>
 
+
+
         <!-- Game 2 -->
+
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,6 +122,8 @@
                 android:inputType="number"
                 android:hint="Goluri"
                 android:layout_marginStart="8dp"/>
+
+
 
             <EditText
                 android:id="@+id/rightTeamGoals2"
