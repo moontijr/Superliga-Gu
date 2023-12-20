@@ -46,17 +46,19 @@ public class MatchdaysActivity extends AppCompatActivity {
 
         Matchday demoMatchday=new Matchday("Demo1");
         Matchday demoMatchday2=new Matchday("Demo2");
-        Match match = new Match("M1","T1","T2",3,0,"Demo1","P1");
-        Match match1 = new Match("M2","T1","T3",2,0,"Demo1","P1");
-        Match match2 = new Match("M3","T3","T2",1,1,"Demo1","P1");
-        Match match3 = new Match("M4","T3","T11",6,1,"Demo1","P1");
-        Match match4 = new Match("M5","T1","T11",6,4,"Demo1","P1");
-        Match match5 = new Match("M6","T10","T1",1,5,"Demo1","P1");
+        Match match = new Match("M1","T1","T2",1,1,"Demo1","P1");
+        Match match1 = new Match("M2","T1","T3",1,0,"Demo1","P1");
+        Match match2 = new Match("M3","T3","T2",0,1,"Demo1","P1");
+        Match match3 = new Match("M4","T3","T11",0,1,"Demo1","P1");
+        Match match4 = new Match("M5","T1","T11",1,2,"Demo1","P1");
+        Match match5 = new Match("M6","T10","T1",0,2,"Demo1","P1");
         Match match6 = new Match("M7","T2","T12",2,0,"Demo1","P1");
-        Match match7 = new Match("M8","T3","T10",5,0,"Demo1","P1");
-        Match match8 = new Match("M9","T13","T2",1,3,"Demo1","P1");
+        Match match7 = new Match("M8","T3","T10",0,0,"Demo1","P1");
+        Match match8 = new Match("M9","T11","T2",2,2,"Demo1","P1");
         Match match9 = new Match("M10","T10","T11",0,2,"Demo1","P1");
-        Match match10 = new Match("M11","T12","T14",1,4,"Demo1","P1");
+        Match match10 = new Match("M11","T12","T14",1,2,"Demo1","P1");
+        Match match11 = new Match("M12","T14","T11",1,1,"Demo1","P1");
+        Match match12 = new Match("M13","T3","T4",0,0,"Demo1","P1");
         addMatchdayToDatabase(demoMatchday);
         addMatchdayToDatabase(demoMatchday2);
         addMatchToDatabase(match);
@@ -70,6 +72,8 @@ public class MatchdaysActivity extends AppCompatActivity {
         addMatchToDatabase(match8);
         addMatchToDatabase(match9);
         addMatchToDatabase(match10);
+        addMatchToDatabase(match11);
+        addMatchToDatabase(match12);
         logoImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
