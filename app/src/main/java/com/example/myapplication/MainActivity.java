@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.model.Player;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -29,6 +30,8 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
+    private DatabaseReference playersDatabase;
+
 
     FirebaseAuth firebaseAuth;
 
@@ -42,7 +45,11 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         Log.d("Firebase", "Firebase initialized successfully");
 
+
+
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
+        playersDatabase = FirebaseDatabase.getInstance().getReference().child("players");
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
         if (mDatabase == null) {
@@ -53,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() != null) {
+            addPlayersToDb();
             startActivity(new Intent(getApplicationContext(), MatchdaysActivity.class));
             finish();
         }
@@ -198,5 +206,60 @@ public class MainActivity extends AppCompatActivity {
 
 
         popupDialog.show();
+    }
+
+    private void addPlayersToDb(){
+        Player Coman = new Player("P1","Florinel","Coman","Forward","Romania",4500000,"T1");
+        Player Olaru = new Player("P2","Darius","Olaru","Midfielder","Romania",6000000,"T1");
+        Player Manea = new Player("P3","Cristian","Manea","Defender","Romania",3500000,"T2");
+        Player Birligea = new Player("P4","Daniel","Birligea","Forward","Romania",1000000,"T2");
+        Player Amzar = new Player("P5","Costin","Amzar","Defender","Romania",4500000,"T3");
+        Player Grozav = new Player("P6","Gicu","Grozav","Forward","Romania",350000,"T4");
+        Player Budescu = new Player("P7","Constantin","Budescu","Forward","Romania",800000,"T5");
+        Player Niczuly = new Player("P8","Roland","Niczuly","Goalkeeper","Romania",450000,"T6");
+        Player Oroian = new Player("P9","Alexandru","Oroian","Defender","Romania",480000,"T7");
+        Player Phelipe = new Player("P10","Luis","Phelipe","Forward","Brazil",452000,"T8");
+        Player Nemec = new Player("P11","Adam","Nemec","Forward","Romania",155000,"T9");
+        Player Ducan = new Player("P12","Razvan","Ducan","Goalkeeper","Romania",250000,"T10");
+        Player Mitrita = new Player("P13","Alexandru","Mitrita","Forward","Romania",250000,"T11");
+        Player Bauza = new Player("P14","Juan","Bauza","Forward","Argentina",220000,"T14");
+        Player Miculescu = new Player("P15","David","Miculescu","Forward","Romania",424000,"T13");
+        Player Nistor = new Player("P16","Dan","Nistor","Midfielder","Romania",390000,"T14");
+        Player Moldovan = new Player("P17","Horatiu","Moldovan","Goalkeeper","Romania",410000,"T15");
+        Player Krasniqi = new Player("P18","Ermal","Krasniqi","Forward","Kosovo",580000,"T16");
+        Player Omrani = new Player("P19","Bilel","Omrani","Forward","France",250000,"T4");
+        Player Mazilu = new Player("P20","Adrian","Mazilu","Forward","Romania",320000,"T5");
+        addPlayersToDatabase(Coman);
+        addPlayersToDatabase(Olaru);
+        addPlayersToDatabase(Manea);
+        addPlayersToDatabase(Birligea);
+        addPlayersToDatabase(Amzar);
+        addPlayersToDatabase(Grozav);
+        addPlayersToDatabase(Bauza);
+        addPlayersToDatabase(Budescu);
+        addPlayersToDatabase(Niczuly);
+        addPlayersToDatabase(Oroian);
+        addPlayersToDatabase(Phelipe);
+        addPlayersToDatabase(Nemec);
+        addPlayersToDatabase(Ducan);
+        addPlayersToDatabase(Mitrita);
+        addPlayersToDatabase(Miculescu);
+        addPlayersToDatabase(Nistor);
+        addPlayersToDatabase(Moldovan);
+        addPlayersToDatabase(Krasniqi);
+        addPlayersToDatabase(Omrani);
+        addPlayersToDatabase(Mazilu);
+
+
+    }
+
+    private void addPlayersToDatabase(Player player){
+        playersDatabase.child(player.getId()).setValue(player)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("Firebase", "Team " + player.getFirstName() + " added successfully");
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("Firebase", "Error adding " + player.getFirstName() + ": " + e.getMessage());
+                });
     }
 }

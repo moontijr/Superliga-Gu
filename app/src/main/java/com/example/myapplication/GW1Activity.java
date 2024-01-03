@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -84,6 +86,16 @@ public class GW1Activity extends AppCompatActivity {
                 editTextFcsb.setHint(goluriFcsbExpected);
                 EditText editTextCfr = findViewById(R.id.rightTeamGoals1);
                 editTextCfr.setHint(goluriCfrExpected);
+
+                Button teamPlayersPopupButton = findViewById(R.id.moreButton1);
+
+                teamPlayersPopupButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Replace "team1" with the actual team ID you want to use
+                        DetailsUtils.showPlayersPopupForTeams(GW1Activity.this, "T1","T2");
+                    }
+                });
                 //botosani-csu
                 double[] botosaniGoluri = getTeamGoalsScoredExpected(games,"T10");
                 double[] botosaniGoluriLuate= getTeamGoalsConcededExpected(games,"T10");
