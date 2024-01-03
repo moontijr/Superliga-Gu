@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.common.stats.StatsUtils;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -29,8 +32,13 @@ public class LeaderboardActivity extends AppCompatActivity {
     TextView firstPlaceTextView, secondPlaceTextView, thirdPlaceTextView;
     ListView usersListView;
 
+    private int loggedInUserPoints = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.leaderboard);
 
@@ -38,6 +46,8 @@ public class LeaderboardActivity extends AppCompatActivity {
         secondPlaceTextView = findViewById(R.id.secondPlaceTextView);
         thirdPlaceTextView = findViewById(R.id.thirdPlaceTextView);
         usersListView = findViewById(R.id.usersListView);
+
+        TextView userPointsTextView = findViewById(R.id.userPointsTextView);
 
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
 
@@ -55,7 +65,23 @@ public class LeaderboardActivity extends AppCompatActivity {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     User user = userSnapshot.getValue(User.class);
                     userList.add(user);
+
+                    // Log the email addresses for debugging
+                    Log.d("DEBUG", "FirebaseEmail: " + currentUser.getEmail());
+                    Log.d("DEBUG", "UserEmail: " + user.getMailAdress());
+
+                    // Check if the current user's email matches the email in the database
+                    if (currentUser != null && currentUser.getEmail().equals(user.getMailAdress())) {
+                        // Store the points for the logged-in user
+                        loggedInUserPoints = user.getPoints();
+                        Log.d("DEBUG", "Points for logged-in user: " + loggedInUserPoints);
+
+                        userPointsTextView.setText("Dvs aveti " + loggedInUserPoints + " puncte");
+
+                    }
                 }
+
+
 
                 // Sort the user list based on points in descending order
                 Collections.sort(userList, new Comparator<User>() {
@@ -90,6 +116,8 @@ public class LeaderboardActivity extends AppCompatActivity {
                         android.R.layout.simple_list_item_1,
                         userNames
                 );
+
+
 
                 // Set the ArrayAdapter to the ListView
                 usersListView.setAdapter(arrayAdapter);

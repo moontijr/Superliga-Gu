@@ -77,6 +77,6 @@ public class User {
     }
 
     public String toStringPointsUsername() {
-        return String.format("Username: %s has points %d", username, points);
+        return String.format("Utilizatorul %s are %d puncte", username, points);
     }
 }
