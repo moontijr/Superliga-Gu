@@ -9,6 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.repository.MatchRepository;
+import com.example.myapplication.repository.PlayerRepository;
+import com.example.myapplication.repository.TeamRepository;
+import com.example.myapplication.repository.UserRepository;
 import com.google.android.gms.common.stats.StatsUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,10 +36,17 @@ public class LeaderboardActivity extends AppCompatActivity {
     TextView firstPlaceTextView, secondPlaceTextView, thirdPlaceTextView;
     ListView usersListView;
 
+    private UserRepository userRepository = new UserRepository();
+    private PlayerRepository playerRepository = new PlayerRepository();
+    private TeamRepository teamRepository = new TeamRepository();
+    private MatchRepository matchRepository = new MatchRepository();
+
     private int loggedInUserPoints = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 

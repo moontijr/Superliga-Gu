@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.model.Match;
 import com.example.myapplication.model.Team;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,10 +28,12 @@ public class GW1Activity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private DatabaseReference gamesRef;
 
+    private String usernameId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gw1);
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("teams");
         addTeamsToDb();
 
@@ -44,6 +48,8 @@ public class GW1Activity extends AppCompatActivity {
 
     private void retrieveAndDisplayGames() {
         gamesRef.addValueEventListener(new ValueEventListener() {
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Match> games = new ArrayList<>();
@@ -52,6 +58,19 @@ public class GW1Activity extends AppCompatActivity {
                     Match game = gameSnapshot.getValue(Match.class);
                     if (game != null) {
                         games.add(game);
+                    }
+
+                    List<User> userList = new ArrayList<>();
+                    for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                        User user = userSnapshot.getValue(User.class);
+                        userList.add(user);
+
+
+                        if (currentUser != null && currentUser.getEmail().equals(user.getMailAdress())) {
+                            // Store the points for the logged-in user
+                            usernameId = user.getUsername();
+
+                        }
                     }
                 }
 
@@ -72,8 +91,8 @@ public class GW1Activity extends AppCompatActivity {
                 double input2 = getNumberOfGamesForATeamFromGames(games,"T2"); // Some input value, such as the number of past games
 
                 // Make predictions
-                double predictedHomeTeamGoals2 = linearRegression.predictHomeTeamGoals(input2);
-                double predictedAwayTeamGoals2 = linearRegression.predictAwayTeamGoals(input2);
+                double predictedHomeTeamGoals2 = linearRegression2.predictHomeTeamGoals(input2);
+                double predictedAwayTeamGoals2 = linearRegression2.predictAwayTeamGoals(input2);
 
                 // fcsb-cfr
                 String goluriFcsbMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T1",predictedHomeTeamGoals,games);
@@ -89,13 +108,27 @@ public class GW1Activity extends AppCompatActivity {
 
                 Button teamPlayersPopupButton = findViewById(R.id.moreButton1);
 
-                teamPlayersPopupButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+
+                teamPlayersPopupButton.setOnClickListener(v -> {
+                    // Assuming you have Firebase Authentication set up
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (currentUser != null) {
+                        String username = currentUser.getEmail();
+                        // If username is not available in the display name, you might have to retrieve it from your database
+
                         // Replace "team1" with the actual team ID you want to use
-                        DetailsUtils.showPlayersPopupForTeams(GW1Activity.this, "T1","T2");
+                        DetailsUtils.showPlayersPopupForTeams(GW1Activity.this, "T1", "T2", username, "M1");
+                    } else {
+                        // Handle the case when the user is not logged in
+                        // You can show a login prompt or take appropriate action
                     }
                 });
+
+
+
                 //botosani-csu
                 double[] botosaniGoluri = getTeamGoalsScoredExpected(games,"T10");
                 double[] botosaniGoluriLuate= getTeamGoalsConcededExpected(games,"T10");
@@ -128,6 +161,26 @@ public class GW1Activity extends AppCompatActivity {
                 editTextBotosani.setHint(goluriBotosaniExpected);
                 EditText editTextCsu = findViewById(R.id.rightTeamGoals2);
                 editTextCsu.setHint(goluriCsuExpected);
+
+                Button teamPlayersPopupButton2 = findViewById(R.id.moreButton2);
+
+
+                teamPlayersPopupButton2.setOnClickListener(v -> {
+                    // Assuming you have Firebase Authentication set up
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (currentUser != null) {
+                        String username = currentUser.getEmail();
+                        // If username is not available in the display name, you might have to retrieve it from your database
+
+                        // Replace "team1" with the actual team ID you want to use
+                        DetailsUtils.showPlayersPopupForTeams(GW1Activity.this, "T10", "T11", username, "M20");
+                    } else {
+                        // Handle the case when the user is not logged in
+                        // You can show a login prompt or take appropriate action
+                    }
+                });
+
                 //dinamo-petrolul
 
                 double[] dinamoGoluri = getTeamGoalsScoredExpected(games,"T3");
@@ -161,6 +214,26 @@ public class GW1Activity extends AppCompatActivity {
                 editTextDinamo.setHint(goluriDinamoExpected);
                 EditText editTextPetrolul = findViewById(R.id.rightTeamGoals3);
                 editTextPetrolul.setHint(goluriPetrolulExpected);
+
+                Button teamPlayersPopupButton3 = findViewById(R.id.moreButton3);
+
+
+
+                teamPlayersPopupButton3.setOnClickListener(v -> {
+                    // Assuming you have Firebase Authentication set up
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (currentUser != null) {
+                        String username = currentUser.getEmail();
+                        // If username is not available in the display name, you might have to retrieve it from your database
+
+                        // Replace "team1" with the actual team ID you want to use
+                        DetailsUtils.showPlayersPopupForTeams(GW1Activity.this, "T3", "T4", username, "M21");
+                    } else {
+                        // Handle the case when the user is not logged in
+                        // You can show a login prompt or take appropriate action
+                    }
+                });
 
 
 

@@ -46,7 +46,7 @@ public class MatchdaysActivity extends AppCompatActivity {
 
         Matchday demoMatchday=new Matchday("Demo1");
         Matchday demoMatchday2=new Matchday("Demo2");
-        Match match = new Match("M1","T1","T2",1,1,"Demo1","P1");
+        Match match = new Match("M1","T1","T2",1,1,"Demo1","P2");
         Match match1 = new Match("M2","T1","T3",1,0,"Demo1","P1");
         Match match2 = new Match("M3","T3","T2",0,1,"Demo1","P1");
         Match match3 = new Match("M4","T3","T11",0,1,"Demo1","P1");
@@ -59,21 +59,25 @@ public class MatchdaysActivity extends AppCompatActivity {
         Match match10 = new Match("M11","T12","T14",1,2,"Demo1","P1");
         Match match11 = new Match("M12","T14","T11",1,1,"Demo1","P1");
         Match match12 = new Match("M13","T3","T4",0,0,"Demo1","P1");
-        addMatchdayToDatabase(demoMatchday);
-        addMatchdayToDatabase(demoMatchday2);
-        addMatchToDatabase(match);
-        addMatchToDatabase(match1);
-        addMatchToDatabase(match2);
-        addMatchToDatabase(match3);
-        addMatchToDatabase(match4);
-        addMatchToDatabase(match5);
-        addMatchToDatabase(match6);
-        addMatchToDatabase(match7);
-        addMatchToDatabase(match8);
-        addMatchToDatabase(match9);
-        addMatchToDatabase(match10);
-        addMatchToDatabase(match11);
-        addMatchToDatabase(match12);
+        Match matchBotosaniCsu=new Match("M20","T10","T11",3,0,"DEMO1","P13");
+        Match matchDinamoPetrolul=new Match("M21","T3","T4",1,1,"DEMO1","P5");
+//        addMatchdayToDatabase(demoMatchday);
+//        addMatchdayToDatabase(demoMatchday2);
+//        addMatchToDatabase(match);
+//        addMatchToDatabase(match1);
+//        addMatchToDatabase(match2);
+//        addMatchToDatabase(match3);
+//        addMatchToDatabase(match4);
+//        addMatchToDatabase(match5);
+//        addMatchToDatabase(match6);
+//        addMatchToDatabase(match7);
+//        addMatchToDatabase(match8);
+//        addMatchToDatabase(match9);
+//        addMatchToDatabase(match10);
+//        addMatchToDatabase(match11);
+//        addMatchToDatabase(match12);
+        addMatchToDatabase(matchBotosaniCsu);
+        addMatchToDatabase(matchDinamoPetrolul);
         logoImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

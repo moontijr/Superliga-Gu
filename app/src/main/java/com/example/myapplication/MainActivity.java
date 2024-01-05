@@ -16,6 +16,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.model.Player;
+import com.example.myapplication.repository.MatchRepository;
+import com.example.myapplication.repository.PlayerRepository;
+import com.example.myapplication.repository.TeamRepository;
+import com.example.myapplication.repository.UserRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -28,6 +32,11 @@ import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private UserRepository userRepository = new UserRepository();
+    private PlayerRepository playerRepository = new PlayerRepository();
+    private TeamRepository teamRepository = new TeamRepository();
+    private MatchRepository matchRepository = new MatchRepository();
     private DatabaseReference mDatabase;
 
     private DatabaseReference playersDatabase;
