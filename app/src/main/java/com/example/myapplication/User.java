@@ -3,6 +3,16 @@ package com.example.myapplication;
 import java.util.Date;
 
 public class User {
+    private String userID;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
     private String username;
 
     private String password;
@@ -78,5 +88,18 @@ public class User {
 
     public String toStringPointsUsername() {
         return String.format("Username: %s has points %d", username, points);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID='" + userID + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", familyName='" + familyName + '\'' +
+                ", givenName='" + givenName + '\'' +
+                ", mailAdress='" + mailAdress + '\'' +
+                ", points=" + points +
+                '}';
     }
 }

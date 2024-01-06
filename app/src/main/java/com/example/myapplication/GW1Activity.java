@@ -32,7 +32,6 @@ public class GW1Activity extends AppCompatActivity {
 
     private DatabaseReference matchDatabase;
 
-    private InputUtils inputUtils;
 
 
     @Override
@@ -205,29 +204,10 @@ public class GW1Activity extends AppCompatActivity {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             if (firebaseUser != null) {
                 String userId = firebaseUser.getUid();
+                InputUtils inputUtils = new InputUtils();
                 inputUtils.checkExistingInputs(GW1Activity.this, fcsbCfr.getId(), userId, homeGoals, awayGoals);
             }
 
-
-//        homeGoals = Integer.parseInt(editTextFcsb.getText().toString());
-//        awayGoals = Integer.parseInt(editTextCfr.getText().toString());
-//
-//        //Checking if the user entered a number for both teams
-//        if (homeGoals == -1 && awayGoals == -1) {
-//            editTextFcsb.setError("Enter a number of goals for the home team");
-//            editTextCfr.setError("Enter a number of goals for the away team");
-//            return;
-//        } else if (homeGoals == -1) {
-//            editTextFcsb.setError("Enter a number of goals for the home team");
-//        } else if (awayGoals == -1) {
-//            editTextCfr.setError("Enter a number of goals for the away team");
-//        } else {
-//            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//            if (firebaseUser != null) {
-//                String userId = firebaseUser.getUid();
-//                inputUtils.checkExistingInputs(GW1Activity.this, fcsbCfr.getId(), userId, homeGoals, awayGoals);
-//            }
-//        }
     }
 
     private void addMatchToDatabase(Match match) {
