@@ -11,18 +11,16 @@ public class LinearRegression {
 
     public LinearRegression(double[] homeTeamGoals, double[] awayTeamGoals) {
 
-        // Initialize coefficients
         thetaHomeIntercept = 0;
         thetaHomeCoefficient = 0;
         thetaAwayIntercept = 0;
         thetaAwayCoefficient = 0;
 
-        // Train the model
         trainModel(homeTeamGoals, awayTeamGoals);
     }
 
     private void trainModel(double[] homeTeamGoals, double[] awayTeamGoals) {
-        int m = homeTeamGoals.length; // Number of training examples
+        int m = homeTeamGoals.length;
 
         for (int iteration = 0; iteration < maxIterations; iteration++) {
             double homeTeamErrorSum = 0;

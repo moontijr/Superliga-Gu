@@ -62,28 +62,22 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
 
-        // Use addValueEventListener to listen for changes in the data
         usersRef.orderByChild("points").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // Clear the existing content
                 firstPlaceTextView.setText("");
                 secondPlaceTextView.setText("");
                 thirdPlaceTextView.setText("");
 
-                // Convert the data to a list of users
                 List<User> userList = new ArrayList<>();
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     User user = userSnapshot.getValue(User.class);
                     userList.add(user);
 
-                    // Log the email addresses for debugging
                     Log.d("DEBUG", "FirebaseEmail: " + currentUser.getEmail());
                     Log.d("DEBUG", "UserEmail: " + user.getMailAdress());
 
-                    // Check if the current user's email matches the email in the database
                     if (currentUser != null && currentUser.getEmail().equals(user.getMailAdress())) {
-                        // Store the points for the logged-in user
                         loggedInUserPoints = user.getPoints();
                         Log.d("DEBUG", "Points for logged-in user: " + loggedInUserPoints);
 
@@ -94,7 +88,6 @@ public class LeaderboardActivity extends AppCompatActivity {
 
 
 
-                // Sort the user list based on points in descending order
                 Collections.sort(userList, new Comparator<User>() {
                     @Override
                     public int compare(User user1, User user2) {
@@ -102,7 +95,6 @@ public class LeaderboardActivity extends AppCompatActivity {
                     }
                 });
 
-                // Display the top 3 users on the podium
                 for (int i = 0; i < Math.min(3, userList.size()); i++) {
                     User user = userList.get(i);
                     if (i == 0) {
@@ -114,23 +106,18 @@ public class LeaderboardActivity extends AppCompatActivity {
                     }
                 }
 
-                // Display the rest of the users in the list
                 List<String> userNames = new ArrayList<>();
                 for (int i = 3; i < userList.size(); i++) {
                     User user = userList.get(i);
                     userNames.add((i + 1) + ". " + user.toStringPointsUsername());
                 }
 
-                // Set up ArrayAdapter for the ListView
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                         LeaderboardActivity.this,
                         android.R.layout.simple_list_item_1,
                         userNames
                 );
 
-
-
-                // Set the ArrayAdapter to the ListView
                 usersListView.setAdapter(arrayAdapter);
             }
 

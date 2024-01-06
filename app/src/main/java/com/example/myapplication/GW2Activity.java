@@ -10,6 +10,6 @@ public class GW2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.gw1);
+        setContentView(R.layout.gw2);
     }
 }

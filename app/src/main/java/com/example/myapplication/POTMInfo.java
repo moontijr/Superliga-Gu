@@ -6,7 +6,6 @@ public class POTMInfo {
     private String gameId;
 
     public POTMInfo() {
-        // Default constructor required for Firebase
     }
 
     public POTMInfo(String userId, String playerId, String gameId) {

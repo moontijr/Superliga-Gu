@@ -39,8 +39,6 @@ public class GW1Activity extends AppCompatActivity {
 
         gamesRef = FirebaseDatabase.getInstance().getReference("games");
 
-
-        // Retrieve and display games
         retrieveAndDisplayGames();
     }
 
@@ -67,7 +65,6 @@ public class GW1Activity extends AppCompatActivity {
 
 
                         if (currentUser != null && currentUser.getEmail().equals(user.getMailAdress())) {
-                            // Store the points for the logged-in user
                             usernameId = user.getUsername();
 
                         }
@@ -80,7 +77,6 @@ public class GW1Activity extends AppCompatActivity {
                 LinearRegression linearRegression = new LinearRegression(fcsbGoluri,fcsbGoluriLuate);
                 double input = getNumberOfGamesForATeamFromGames(games,"T1"); // Some input value, such as the number of past games
 
-                // Make predictions
                 double predictedHomeTeamGoals = linearRegression.predictHomeTeamGoals(input);
                 double predictedAwayTeamGoals = linearRegression.predictAwayTeamGoals(input);
 
@@ -90,7 +86,6 @@ public class GW1Activity extends AppCompatActivity {
                 LinearRegression linearRegression2 = new LinearRegression(cfrGoluri,cfrGoluriLuate);
                 double input2 = getNumberOfGamesForATeamFromGames(games,"T2"); // Some input value, such as the number of past games
 
-                // Make predictions
                 double predictedHomeTeamGoals2 = linearRegression2.predictHomeTeamGoals(input2);
                 double predictedAwayTeamGoals2 = linearRegression2.predictAwayTeamGoals(input2);
 
@@ -112,18 +107,13 @@ public class GW1Activity extends AppCompatActivity {
 
 
                 teamPlayersPopupButton.setOnClickListener(v -> {
-                    // Assuming you have Firebase Authentication set up
                     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
                     if (currentUser != null) {
                         String username = currentUser.getEmail();
-                        // If username is not available in the display name, you might have to retrieve it from your database
 
-                        // Replace "team1" with the actual team ID you want to use
                         DetailsUtils.showPlayersPopupForTeams(GW1Activity.this, "T1", "T2", username, "M1");
                     } else {
-                        // Handle the case when the user is not logged in
-                        // You can show a login prompt or take appropriate action
                     }
                 });
 
@@ -136,7 +126,6 @@ public class GW1Activity extends AppCompatActivity {
                 LinearRegression linearRegressionBotosani = new LinearRegression(botosaniGoluri,botosaniGoluriLuate);
                 double inputBotosani = getNumberOfGamesForATeamFromGames(games,"T10"); // Some input value, such as the number of past games
 
-                // Make predictions
                 double predictedHomeTeamGoalsBotosani = linearRegression.predictHomeTeamGoals(inputBotosani);
                 double predictedAwayTeamGoalsBotosani = linearRegression.predictAwayTeamGoals(inputBotosani);
 
@@ -146,11 +135,9 @@ public class GW1Activity extends AppCompatActivity {
                 LinearRegression linearRegressionCsu = new LinearRegression(csuGoluri,csuGoluriLuate);
                 double inputCsu = getNumberOfGamesForATeamFromGames(games,"T11"); // Some input value, such as the number of past games
 
-                // Make predictions
                 double predictedHomeTeamGoalsCsu = linearRegressionCsu.predictHomeTeamGoals(inputCsu);
                 double predictedAwayTeamGoalsCsu = linearRegressionBotosani.predictAwayTeamGoals(inputCsu);
 
-                // botosani-csu
                 String goluriBotosaniMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T10",predictedHomeTeamGoalsBotosani,games);
                 String goluriBotosaniPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T10",predictedAwayTeamGoalsBotosani,games);
                 String goluriCsuPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T11",predictedHomeTeamGoalsCsu,games);
@@ -166,18 +153,13 @@ public class GW1Activity extends AppCompatActivity {
 
 
                 teamPlayersPopupButton2.setOnClickListener(v -> {
-                    // Assuming you have Firebase Authentication set up
                     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
                     if (currentUser != null) {
                         String username = currentUser.getEmail();
-                        // If username is not available in the display name, you might have to retrieve it from your database
 
-                        // Replace "team1" with the actual team ID you want to use
                         DetailsUtils.showPlayersPopupForTeams(GW1Activity.this, "T10", "T11", username, "M20");
                     } else {
-                        // Handle the case when the user is not logged in
-                        // You can show a login prompt or take appropriate action
                     }
                 });
 
@@ -189,7 +171,6 @@ public class GW1Activity extends AppCompatActivity {
                 LinearRegression linearRegressionDinamo = new LinearRegression(dinamoGoluri,dinamoGoluriLuate);
                 double inputDinamo = getNumberOfGamesForATeamFromGames(games,"T13"); // Some input value, such as the number of past games
 
-                // Make predictions
                 double predictedHomeTeamGoalsDinamo = linearRegressionDinamo.predictHomeTeamGoals(inputDinamo);
                 double predictedAwayTeamGoalsDinamo = linearRegressionDinamo.predictAwayTeamGoals(inputDinamo);
 
@@ -199,7 +180,6 @@ public class GW1Activity extends AppCompatActivity {
                 LinearRegression linearRegressionPetrolul = new LinearRegression(petrolulGoluri,petrolulGoluriLuate);
                 double inputPetrolul = getNumberOfGamesForATeamFromGames(games,"T4"); // Some input value, such as the number of past games
 
-                // Make predictions
                 double predictedHomeTeamGoalsPetrolul = linearRegressionPetrolul.predictHomeTeamGoals(inputPetrolul);
                 double predictedAwayTeamGoalsPetrolul = linearRegressionBotosani.predictAwayTeamGoals(inputPetrolul);
 
@@ -220,18 +200,13 @@ public class GW1Activity extends AppCompatActivity {
 
 
                 teamPlayersPopupButton3.setOnClickListener(v -> {
-                    // Assuming you have Firebase Authentication set up
                     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
                     if (currentUser != null) {
                         String username = currentUser.getEmail();
-                        // If username is not available in the display name, you might have to retrieve it from your database
 
-                        // Replace "team1" with the actual team ID you want to use
                         DetailsUtils.showPlayersPopupForTeams(GW1Activity.this, "T3", "T4", username, "M21");
                     } else {
-                        // Handle the case when the user is not logged in
-                        // You can show a login prompt or take appropriate action
                     }
                 });
 
@@ -253,18 +228,13 @@ public class GW1Activity extends AppCompatActivity {
                 Button teamPlayersPopupButton4 = findViewById(R.id.moreButton4);
 
                 teamPlayersPopupButton4.setOnClickListener(v -> {
-                    // Assuming you have Firebase Authentication set up
                     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
                     if (currentUser != null) {
                         String username = currentUser.getEmail();
-                        // If username is not available in the display name, you might have to retrieve it from your database
 
-                        // Replace "team1" with the actual team ID you want to use
                         DetailsUtils.showPlayersPopupForTeams(GW1Activity.this, "T5", "T6", username, "M22");
                     } else {
-                        // Handle the case when the user is not logged in
-                        // You can show a login prompt or take appropriate action
                     }
                 });
 
@@ -338,15 +308,11 @@ public class GW1Activity extends AppCompatActivity {
         List<Double> expectedGoalsList = new ArrayList<>();
 
         for (Match match : matches) {
-            // Check if the match involves the specified team as the home team
             if (match.getHomeTeamId().equals(teamId)) {
                 expectedGoalsList.add((double) match.getHomeTeamGoals());
             }
-            // You might want to add another condition to check if the team is the away team
-            // and handle away team goals accordingly
         }
 
-        // Convert the list to an array
         double[] expectedGoalsArray = new double[expectedGoalsList.size()];
         for (int i = 0; i < expectedGoalsList.size(); i++) {
             expectedGoalsArray[i] = expectedGoalsList.get(i);
@@ -359,16 +325,12 @@ public class GW1Activity extends AppCompatActivity {
         List<Double> expectedGoalsList = new ArrayList<>();
 
         for (Match match : matches) {
-            // Check if the match involves the specified team as the home team
             if (match.getHomeTeamId().equals(teamId)) {
                 expectedGoalsList.add((double) match.getAwayTeamGoals());
             }
-            // You might want to add another condition to check if the team is the away team
-            // and handle away team goals accordingly
         }
 
 
-        // Convert the list to an array
         double[] expectedGoalsArray = new double[expectedGoalsList.size()];
         for (int i = 0; i < expectedGoalsList.size(); i++) {
             expectedGoalsArray[i] = expectedGoalsList.get(i);

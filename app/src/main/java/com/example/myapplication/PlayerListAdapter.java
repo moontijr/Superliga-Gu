@@ -35,14 +35,11 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.player_list_item, parent, false);
         }
 
-        // Get the current player
         Player currentPlayer = getItem(position);
 
-        // Set player name
         TextView playerNameTextView = convertView.findViewById(R.id.playerNameTextView);
         playerNameTextView.setText(currentPlayer != null ? currentPlayer.toString() : "");
 
-        // Set up checkbox
         CheckBox playerCheckBox = convertView.findViewById(R.id.playerCheckBox);
         playerCheckBox.setChecked(selectedPlayers.get(position, false));
         playerCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -52,7 +49,6 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
         return convertView;
     }
 
-    // Get the list of selected players
     public List<Player> getSelectedPlayers() {
         List<Player> selectedPlayersList = new ArrayList<>();
         for (int i = 0; i < playerList.size(); i++) {

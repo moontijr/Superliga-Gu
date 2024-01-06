@@ -212,7 +212,6 @@ public class MatchdaysActivity extends AppCompatActivity {
     }
 
     public void onLogoClick(View view) {
-        // Start the new activity
         button = findViewById(R.id.logoImageView);
         button.setOnClickListener(v -> openLeaderboardActivity());
     }
@@ -256,12 +255,10 @@ public class MatchdaysActivity extends AppCompatActivity {
         buttonGw8.setOnClickListener(v -> openGW8());
     }
 
-    //signing out from the app through Firebase
     public void signOut(View view) {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }
 
-    //signing out from the app through Firebase
 }

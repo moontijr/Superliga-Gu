@@ -32,56 +32,47 @@ import java.util.List;
 public class DetailsUtils {
 
     public static void showPlayersPopupForTeams(Context context, String teamId1, String teamId2, String loggedInPlayerId, String gameId) {
-        // Create a dialog for the players popup
+
         Dialog playersPopupDialog = new Dialog(context);
         playersPopupDialog.setContentView(R.layout.game1popup);
 
-        // Find views in the popup layout
         Spinner playerSpinner = playersPopupDialog.findViewById(R.id.playerSpinner);
         AutoCompleteTextView playerNameAutoComplete = playersPopupDialog.findViewById(R.id.playerNameAutoComplete);
         Button submitPlayerButton = playersPopupDialog.findViewById(R.id.submitPlayerButton);
 
-        // Populate the Spinner with the list of players
         List<Player> playerList = getPlayerListForTeams(context, teamId1, teamId2);
         PlayerSpinnerAdapter spinnerAdapter = new PlayerSpinnerAdapter(context, playerList);
         playerSpinner.setAdapter(spinnerAdapter);
 
-        // Set up the click listener for the submit button
         submitPlayerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the selected player from the Spinner or the custom input
                 Player selectedPlayer;
                 if (playerSpinner.getSelectedItem() != null) {
                     selectedPlayer = (Player) playerSpinner.getSelectedItem();
                 } else {
                     String customPlayerName = playerNameAutoComplete.getText().toString().trim();
-                    // Find the player with the entered name in the player list
                     selectedPlayer = findPlayerByName(playerList, customPlayerName);
                 }
 
                 if (selectedPlayer != null) {
-                    // Add POTM info to the database
                     addPOTMInfo(loggedInPlayerId, selectedPlayer.getId(), gameId);
 
-                    // Dismiss the popup
                     playersPopupDialog.dismiss();
                 }
             }
         });
 
-        // Show the players popup
         playersPopupDialog.show();
     }
 
-    // Function to find a player by name in the list
     private static Player findPlayerByName(List<Player> playerList, String playerName) {
         for (Player player : playerList) {
             if (player.toString().equalsIgnoreCase(playerName)) {
                 return player;
             }
         }
-        return null; // Player not found
+        return null;
     }
 
 
@@ -106,12 +97,10 @@ public class DetailsUtils {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle error
                 Toast.makeText(context, "Failed to retrieve players", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Combine players from both teams using OR condition
         playersRef.orderByChild("teamId").equalTo(teamId2).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -143,7 +132,6 @@ public class DetailsUtils {
     public static void addPOTMInfo(String userId, String playerId, String gameId) {
         DatabaseReference potmInfoRef = FirebaseDatabase.getInstance().getReference().child("potm_info");
 
-        // Check if an entry with the same userId and gameId already exists
         potmInfoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -152,7 +140,6 @@ public class DetailsUtils {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     POTMInfo existingPOTMInfo = snapshot.getValue(POTMInfo.class);
 
-                    // Check if an entry with the same gameId already exists for the user
                     if (existingPOTMInfo != null && existingPOTMInfo.getUserId().equals(userId)
                             && existingPOTMInfo.getGameId().equals(gameId)) {
                         entryExists = true;
@@ -160,7 +147,6 @@ public class DetailsUtils {
                     }
                 }
 
-                // If entry doesn't exist, add a new POTMInfo
                 if (!entryExists) {
                     String potmInfoKey = potmInfoRef.push().getKey();
                     POTMInfo potmInfo = new POTMInfo(userId, playerId, gameId);
@@ -183,15 +169,12 @@ public class DetailsUtils {
                         }
                     });
                 } else {
-                    // Handle the case where an entry with the same userId and gameId already exists
-                    // You can show a message or perform any necessary actions
                     Log.d("POTM", "Entry with the same userId and gameId already exists.");
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle errors in the database query
                 Log.e("POTM", "Error checking for existing entry: " + databaseError.getMessage());
             }
         });
@@ -204,7 +187,6 @@ public class DetailsUtils {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 
         if (currentUser == null) {
-            // User not authenticated
             return;
         }
 
@@ -216,8 +198,6 @@ public class DetailsUtils {
                 Match game = dataSnapshot.getValue(Match.class);
 
                 if (game != null && game.getPotmId().equals(playerId)) {
-                    // The provided playerId is the POTM for this game
-                    // Update points for the logged-in user
                     DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
                     setPointsTo5();
 
@@ -228,7 +208,6 @@ public class DetailsUtils {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle errors in the game data query
                 Log.e("UpdatePoints", "Error querying game data: " + databaseError.getMessage());
             }
         });
@@ -245,25 +224,21 @@ public class DetailsUtils {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     POTMInfo potmInfo = snapshot.getValue(POTMInfo.class);
 
-                    // Check if an entry with the specified playerId exists for the gameId
                     if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
                         setPointsTo5();
                     }
                 }
 
-                // If the entry exists, call the setPointsTo5 function
                 if (entryExists) {
                     setPointsTo5();
                 } else {
-                    // Entry doesn't exist, handle accordingly (optional)
-                    // You can show a message or perform any necessary actions
+
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle errors in the database query
-                // Log.e("POTM", "Error checking for existing entry: " + databaseError.getMessage());
+
             }
         });
     }
@@ -280,11 +255,9 @@ public class DetailsUtils {
                     User user = userSnapshot.getValue(User.class);
 
                     if (currentUser != null && currentUser.getEmail().equals(user.getMailAdress())) {
-                        // Update points for the logged-in user
                         int currentPoints = user.getPoints();
                         int newPoints = currentPoints + 5;
 
-                        // Push the updated points to the database
                         userSnapshot.getRef().child("points").setValue(newPoints)
                                 .addOnCompleteListener(task -> {
                                     if (task.isSuccessful()) {
@@ -293,7 +266,7 @@ public class DetailsUtils {
                                         Log.e("DEBUG", "Error updating points: " + task.getException().getMessage());
                                     }
                                 });
-                        break; // No need to continue iterating if we found the logged-in user
+                        break;
                     }
                 }
             }

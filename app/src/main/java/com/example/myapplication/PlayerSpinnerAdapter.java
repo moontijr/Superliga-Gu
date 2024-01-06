@@ -25,14 +25,14 @@ public class PlayerSpinnerAdapter extends ArrayAdapter<Player> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         TextView textView = (TextView) super.getView(position, convertView, parent);
-        textView.setTextColor(Color.BLACK); // Set the default text color
+        textView.setTextColor(Color.BLACK);
         return textView;
     }
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         TextView textView = (TextView) super.getDropDownView(position, convertView, parent);
-        textView.setTextColor(Color.BLACK); // Set the text color for each item in the dropdown
+        textView.setTextColor(Color.BLACK);
         return textView;
     }
 }
