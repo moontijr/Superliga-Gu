@@ -250,6 +250,24 @@ public class GW1Activity extends AppCompatActivity {
                 EditText editTextSepsi = findViewById(R.id.rightTeamGoals4);
                 editTextSepsi.setHint(goluriSepsiExpected);
 
+                Button teamPlayersPopupButton4 = findViewById(R.id.moreButton4);
+
+                teamPlayersPopupButton4.setOnClickListener(v -> {
+                    // Assuming you have Firebase Authentication set up
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (currentUser != null) {
+                        String username = currentUser.getEmail();
+                        // If username is not available in the display name, you might have to retrieve it from your database
+
+                        // Replace "team1" with the actual team ID you want to use
+                        DetailsUtils.showPlayersPopupForTeams(GW1Activity.this, "T5", "T6", username, "M22");
+                    } else {
+                        // Handle the case when the user is not logged in
+                        // You can show a login prompt or take appropriate action
+                    }
+                });
+
 
             }
 

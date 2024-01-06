@@ -168,10 +168,14 @@ public class DetailsUtils {
                         @Override
                         public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                             if (databaseError == null) {
-                                // Entry added successfully, update points for the POTM
+                                if(gameId == "M1")
                                 checkAndSetPoints("M1","P2");
+                                else if (gameId == "M20")
                                 checkAndSetPoints("M20","P13");
+                                else if(gameId == "M21")
                                 checkAndSetPoints("M21","P5");
+                                else if(gameId == "M22")
+                                    checkAndSetPoints("M22","P8");
                             } else {
                                 // Handle the error during POTMInfo insertion
                                 Log.e("POTM", "Error adding POTMInfo: " + databaseError.getMessage());
@@ -243,8 +247,7 @@ public class DetailsUtils {
 
                     // Check if an entry with the specified playerId exists for the gameId
                     if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
-                        entryExists = true;
-                        break;
+                        setPointsTo5();
                     }
                 }
 
