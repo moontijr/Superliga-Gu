@@ -1,8 +1,293 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FF0000">
+    android:background="#FF6666"
+    android:layout_height="match_parent">
 
-    <!-- Add your other UI elements here if needed -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <!-- Game 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="#FF6666">
+
+            <ImageView
+                android:id="@+id/leftTeamLogo1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/botosani"
+                android:contentDescription="Left Team Logo 1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" vs "
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+            <ImageView
+                android:id="@+id/rightTeamLogo1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/rapid"
+                android:contentDescription="Right Team Logo 1"/>
+
+
+            <EditText
+                android:id="@+id/leftTeamGoals1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Goluri"
+                android:layout_marginStart="8dp"/>
+
+
+            <EditText
+                android:id="@+id/rightTeamGoals1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Goluri"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+
+        <!-- More and Submit Buttons for Game 1 -->
+        <Button
+            android:id="@+id/moreButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detalii"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+        <Button
+            android:id="@+id/submitButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirma"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+
+
+        <!-- Game 2 -->
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="#FF6666">
+
+            <ImageView
+                android:id="@+id/leftTeamLogo2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/otelul"
+                android:contentDescription="Left Team Logo 2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" vs "
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+            <ImageView
+                android:id="@+id/rightTeamLogo2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/hermannstadt"
+                android:contentDescription="Right Team Logo 2"/>
+
+            <EditText
+                android:id="@+id/leftTeamGoals2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Goluri"
+                android:layout_marginStart="8dp"/>
+
+
+
+            <EditText
+                android:id="@+id/rightTeamGoals2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Goluri"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- More and Submit Buttons for Game 2 -->
+        <Button
+            android:id="@+id/moreButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detalii"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+        <Button
+            android:id="@+id/submitButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirma"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+
+
+        <!-- Game 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="#FF6666">
+
+            <ImageView
+                android:id="@+id/leftTeamLogo3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/u"
+                android:contentDescription="Left Team Logo 2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" vs "
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+            <ImageView
+                android:id="@+id/rightTeamLogo3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/uta"
+                android:contentDescription="Right Team Logo 2"/>
+
+            <EditText
+                android:id="@+id/leftTeamGoals3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Goluri"
+                android:layout_marginStart="8dp"/>
+
+            <EditText
+                android:id="@+id/rightTeamGoals3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Goluri"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- More and Submit Buttons for Game 2 -->
+        <Button
+            android:id="@+id/moreButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detalii"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+        <Button
+            android:id="@+id/submitButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirma"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Add more game layouts, buttons, and UI elements as needed -->
+
+        <!-- Game 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="#FF6666">
+
+            <ImageView
+                android:id="@+id/leftTeamLogo4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/farul"
+                android:contentDescription="Left Team Logo 2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" vs "
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+            <ImageView
+                android:id="@+id/rightTeamLogo4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/fcsb"
+                android:contentDescription="Right Team Logo 2"/>
+
+            <EditText
+                android:id="@+id/leftTeamGoals4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Goluri"
+                android:layout_marginStart="8dp"/>
+
+            <EditText
+                android:id="@+id/rightTeamGoals4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Goluri"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- More and Submit Buttons for Game 2 -->
+        <Button
+            android:id="@+id/moreButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detalii"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+        <Button
+            android:id="@+id/submitButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirma"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

@@ -4,4 +4,6 @@
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="guru">GURU</string>
+        <string name="select_player_of_the_game">Select Player of the Game</string>
+        <string name="player_of_the_game">Jucatorul Meciului</string>
 </resources>
