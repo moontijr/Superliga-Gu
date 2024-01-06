@@ -248,13 +248,6 @@ public class MatchdaysActivity extends AppCompatActivity {
         buttonGw8.setOnClickListener(v -> openGW8());
     }
 
-    //signing out from the app through Firebase
-    public void signOut(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        finish();
-    }
-
     //opening the popup with the rules
     public void rules(View view) {
         Dialog popupDialog = new Dialog(this);
@@ -263,4 +256,13 @@ public class MatchdaysActivity extends AppCompatActivity {
 
         popupDialog.show();
     }
+
+    //signing out from the app through Firebase
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        finish();
+    }
+
+
 }

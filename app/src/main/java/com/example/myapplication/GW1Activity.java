@@ -52,7 +52,6 @@ public class GW1Activity extends AppCompatActivity {
     }
 
 
-
     private void retrieveAndDisplayGames() {
         gamesRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -67,45 +66,45 @@ public class GW1Activity extends AppCompatActivity {
                 }
 
                 // fcsb-cfr
-                String goluriFcsbMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T1",2.3,games);
-                String goluriFcsbPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T1",1.7,games);
-                String goluriCfrPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T2",1.3,games);
-                String goluriCfrMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T2",1.9,games);
-                String goluriFcsbExpected=FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriFcsbMarcate,goluriCfrPrimite);
-                String goluriCfrExpected=FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriCfrMarcate,goluriFcsbPrimite);
+                String goluriFcsbMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T1", 2.3, games);
+                String goluriFcsbPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T1", 1.7, games);
+                String goluriCfrPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T2", 1.3, games);
+                String goluriCfrMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T2", 1.9, games);
+                String goluriFcsbExpected = FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriFcsbMarcate, goluriCfrPrimite);
+                String goluriCfrExpected = FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriCfrMarcate, goluriFcsbPrimite);
                 EditText editTextFcsb = findViewById(R.id.leftTeamGoals1);
                 editTextFcsb.setHint(goluriFcsbExpected);
                 EditText editTextCfr = findViewById(R.id.rightTeamGoals1);
                 editTextCfr.setHint(goluriCfrExpected);
                 //botosani-csu
-                String goluriBotosaniMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T10",0.7,games);
-                String goluriBotosaniPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T10 ",3.2,games);
-                String goluriCsuPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T3",0.9,games);
-                String goluriCsuMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T3",2.8,games);
-                String goluriBotosaniExpected=FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriBotosaniMarcate,goluriCsuPrimite);
-                String goluriCsuExpected=FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriCsuMarcate,goluriBotosaniPrimite);
+                String goluriBotosaniMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T10", 0.7, games);
+                String goluriBotosaniPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T10 ", 3.2, games);
+                String goluriCsuPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T3", 0.9, games);
+                String goluriCsuMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T3", 2.8, games);
+                String goluriBotosaniExpected = FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriBotosaniMarcate, goluriCsuPrimite);
+                String goluriCsuExpected = FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriCsuMarcate, goluriBotosaniPrimite);
                 EditText editTextBotosani = findViewById(R.id.leftTeamGoals2);
                 editTextBotosani.setHint(goluriBotosaniExpected);
                 EditText editTextCsu = findViewById(R.id.rightTeamGoals2);
                 editTextCsu.setHint(goluriCsuExpected);
                 //dinamo-petrolul
-                String goluriDinamoMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T11",0.4,games);
-                String goluriDinamoPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T11 ",2.8,games);
-                String goluriPetrolulPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T14",1.1,games);
-                String goluriPetrolulMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T14",1.0,games);
-                String goluriDinamoExpected=FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriDinamoMarcate,goluriPetrolulPrimite);
-                String goluriPetrolulExpected=FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriPetrolulMarcate,goluriDinamoPrimite);
+                String goluriDinamoMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T11", 0.4, games);
+                String goluriDinamoPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T11 ", 2.8, games);
+                String goluriPetrolulPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T14", 1.1, games);
+                String goluriPetrolulMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T14", 1.0, games);
+                String goluriDinamoExpected = FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriDinamoMarcate, goluriPetrolulPrimite);
+                String goluriPetrolulExpected = FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriPetrolulMarcate, goluriDinamoPrimite);
                 EditText editTextDinamo = findViewById(R.id.leftTeamGoals3);
                 editTextDinamo.setHint(goluriDinamoExpected);
                 EditText editTextPetrolul = findViewById(R.id.rightTeamGoals3);
                 editTextPetrolul.setHint(goluriPetrolulExpected);
                 //farul-sepsi
-                String goluriFarulMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T12",1.4,games);
-                String goluriFarulPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T12 ",1.3,games);
-                String goluriSepsiPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T13",3.2,games);
-                String goluriSepsiMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T13",1.4,games);
-                String goluriFarulExpected=FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriFarulMarcate,goluriSepsiPrimite);
-                String goluriSepsiExpected=FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriSepsiMarcate,goluriFarulPrimite);
+                String goluriFarulMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T12", 1.4, games);
+                String goluriFarulPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T12 ", 1.3, games);
+                String goluriSepsiPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T13", 3.2, games);
+                String goluriSepsiMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T13", 1.4, games);
+                String goluriFarulExpected = FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriFarulMarcate, goluriSepsiPrimite);
+                String goluriSepsiExpected = FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriSepsiMarcate, goluriFarulPrimite);
                 EditText editTextFarul = findViewById(R.id.leftTeamGoals4);
                 editTextFarul.setHint(goluriFarulExpected);
                 EditText editTextSepsi = findViewById(R.id.rightTeamGoals4);
@@ -120,11 +119,6 @@ public class GW1Activity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
 
 
     private void addTeamsToDb() {
@@ -166,7 +160,6 @@ public class GW1Activity extends AppCompatActivity {
     }
 
 
-
     private void addTeamToDatabase(Team team) {
         mDatabase.child(team.getId()).setValue(team)
                 .addOnSuccessListener(aVoid -> {
@@ -180,44 +173,64 @@ public class GW1Activity extends AppCompatActivity {
 
     public void confirmPredictionForFcsbCfr(View view) {
         //test match
-        Match fcsbCfr = new Match("MSteCfr","T1","T2",1,1,"Demo1");
+        Match fcsbCfr = new Match("MSteCfr", "T1", "T2", 1, 1, "Demo1");
         addMatchToDatabase(fcsbCfr);
 
         EditText editTextFcsb = findViewById(R.id.leftTeamGoals1);
         EditText editTextCfr = findViewById(R.id.rightTeamGoals1);
 
-        Button submitButton1 = findViewById(R.id.submitButton1);
 
-        submitButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int homeGoals = -1; //convention
-                int awayGoals = -1; //convention
+        int homeGoals = -1; //convention
+        int awayGoals = -1; //convention
 
-                homeGoals = Integer.parseInt(editTextFcsb.getText().toString());
-                awayGoals = Integer.parseInt(editTextCfr.getText().toString());
+        try {
+            homeGoals = Integer.parseInt(editTextFcsb.getText().toString());
+            awayGoals = Integer.parseInt(editTextCfr.getText().toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return;
+        }
 
-                //Checking if the user entered a number for both teams
-                if(homeGoals == -1 && awayGoals == -1){
-                    editTextFcsb.setError("Enter a number of goals for the home team");
-                    editTextCfr.setError("Enter a number of goals for the away team");
-                    return;
-                } else if (homeGoals == -1) {
-                    editTextFcsb.setError("Enter a number of goals for the home team");
-                } else if (awayGoals == -1) {
-                    editTextCfr.setError("Enter a number of goals for the away team");
-                } else{
-                    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                    if(firebaseUser != null) {
-                        String userId = firebaseUser.getUid();
-                        inputUtils.checkExistingInputs(GW1Activity.this, fcsbCfr.getId(), userId, homeGoals, awayGoals);
-                    }
-                }
+        //Checking if the user entered a number for both teams
+        if (homeGoals == -1 || awayGoals == -1) {
+            if (homeGoals == -1) {
+                editTextFcsb.setError("Enter a number of goals for the home team");
             }
-        });
+            if (awayGoals == -1) {
+                editTextCfr.setError("Enter a number of goals for the away team");
+            }
+            return;
+        }
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            if (firebaseUser != null) {
+                String userId = firebaseUser.getUid();
+                inputUtils.checkExistingInputs(GW1Activity.this, fcsbCfr.getId(), userId, homeGoals, awayGoals);
+            }
+
+
+//        homeGoals = Integer.parseInt(editTextFcsb.getText().toString());
+//        awayGoals = Integer.parseInt(editTextCfr.getText().toString());
+//
+//        //Checking if the user entered a number for both teams
+//        if (homeGoals == -1 && awayGoals == -1) {
+//            editTextFcsb.setError("Enter a number of goals for the home team");
+//            editTextCfr.setError("Enter a number of goals for the away team");
+//            return;
+//        } else if (homeGoals == -1) {
+//            editTextFcsb.setError("Enter a number of goals for the home team");
+//        } else if (awayGoals == -1) {
+//            editTextCfr.setError("Enter a number of goals for the away team");
+//        } else {
+//            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//            if (firebaseUser != null) {
+//                String userId = firebaseUser.getUid();
+//                inputUtils.checkExistingInputs(GW1Activity.this, fcsbCfr.getId(), userId, homeGoals, awayGoals);
+//            }
+//        }
     }
 
-    private void addMatchToDatabase(Match match){
+    private void addMatchToDatabase(Match match) {
         matchDatabase.child(match.getId()).setValue(match)
                 .addOnSuccessListener(aVoid -> {
                     Log.d("Firebase", "Match " + match + " added successfully");
