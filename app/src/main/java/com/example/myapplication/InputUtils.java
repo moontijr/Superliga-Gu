@@ -34,15 +34,18 @@ public class InputUtils {
                 boolean inputExists = false;
 
                 for (DataSnapshot inputSnapshot : dataSnapshot.getChildren()) {
-                    if (inputSnapshot.child("matchID").getValue(String.class).equals(matchID)) {
-                        inputExists = true;
+                    InputMatch inputMatch = inputSnapshot.getValue(InputMatch.class);
 
+                    if (inputMatch != null && inputMatch.getUserID().equals(userID) && inputMatch.getMatchID().equals(matchID)) {
+                        inputExists = true;
+                        break;
                     }
                 }
 
                 if (inputExists) {
                     //Alert the users they cannot make anymore predictions for this specific game
                     Toast.makeText(context, "Deja ati introdus un scor pentru acest meci", Toast.LENGTH_SHORT).show();
+                    Log.d("InputMatch","There is already an input for this specific match");
                 } else {
                     //Save the prediction and proceed to calculate their points
                     InputMatch inputMatch = new InputMatch(userID, matchID, homeTeamGoals, awayTeamGoals);
@@ -76,16 +79,37 @@ public class InputUtils {
                                                             for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                                                                 try {
                                                                     User currentUser = userSnapshot.getValue(User.class);
-                                                                    if (currentUser != null) {
+                                                                    if (currentUser != null && currentUser.getMailAdress().equals(firebaseUser.getEmail())) {
                                                                         Log.d("Firebase", "User details: " + currentUser.toString());
 
                                                                         // Starting the points algorithm
-                                                                        int points = 5;
+                                                                        int points = 0;
 
-                                                                        // ... rest of the points calculation
+                                                                        //correct result (win, draw, lose)
+                                                                        if (match.getHomeTeamGoals() > match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() > inputMatch.getAwayTeamGoals() ||
+                                                                                match.getHomeTeamGoals() == match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() == inputMatch.getAwayTeamGoals() ||
+                                                                                match.getHomeTeamGoals() < match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() < inputMatch.getAwayTeamGoals()) {
+                                                                            points += 3;
+                                                                        }
+                                                                        //correct # of goals scored by the home team
+                                                                        if (match.getHomeTeamGoals() == inputMatch.getHomeTeamGoals()) {
+                                                                            points += 1;
+                                                                        }
+                                                                        //correct # of goals scored by the away team
+                                                                        if (match.getAwayTeamGoals() == inputMatch.getAwayTeamGoals()) {
+                                                                            points += 1;
+                                                                        }
+                                                                        if (match.getHomeTeamGoals() - match.getAwayTeamGoals() == inputMatch.getHomeTeamGoals() - inputMatch.getAwayTeamGoals()) {
+                                                                            points += 1;
+                                                                        }
+                                                                        //opposite result
+                                                                        if (match.getHomeTeamGoals() > match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() < inputMatch.getAwayTeamGoals() ||
+                                                                                match.getHomeTeamGoals() < match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() > inputMatch.getAwayTeamGoals()) {
+                                                                            points -= 2;
+                                                                        }
 
                                                                         // Update user points and input match points
-                                                                        currentUser.setPoints(currentUser.getPoints() + points);
+                                                                        userSnapshot.getRef().child("points").setValue(currentUser.getPoints() + points);
                                                                         inputMatch.setPointsCollected(points);
                                                                     }
                                                                 } catch (Exception e) {
@@ -99,79 +123,11 @@ public class InputUtils {
                                                             Log.e("Firebase", "Database error: " + error.getMessage());
                                                         }
                                                     });
-
-
-//                                                    usersRef.addChildEventListener(new ChildEventListener() {
-//                                                        @Override
-//                                                        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//                                                            User currentUser = snapshot.getValue(User.class);
-//                                                            if (currentUser != null) {
-//                                                                Log.d("Firebase", "User details: " + currentUser.toString());
-//
-//                                                                // Starting the points algorithm
-//                                                                int points = 0;
-//
-//                                                                //correct result (win, draw, lose)
-//                                                                if (match.getHomeTeamGoals() > match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() > inputMatch.getAwayTeamGoals() ||
-//                                                                        match.getHomeTeamGoals() == match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() == inputMatch.getAwayTeamGoals() ||
-//                                                                        match.getHomeTeamGoals() < match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() < inputMatch.getAwayTeamGoals()) {
-//                                                                    points += 3;
-//                                                                }
-//                                                                //correct # of goals scored by the home team
-//                                                                if (match.getHomeTeamGoals() == inputMatch.getHomeTeamGoals()) {
-//                                                                    points += 1;
-//                                                                }
-//                                                                //correct # of goals scored by the away team
-//                                                                if (match.getAwayTeamGoals() == inputMatch.getAwayTeamGoals()) {
-//                                                                    points += 1;
-//                                                                }
-//                                                                if (match.getHomeTeamGoals() - match.getAwayTeamGoals() == inputMatch.getHomeTeamGoals() - inputMatch.getAwayTeamGoals()) {
-//                                                                    points += 1;
-//                                                                }
-//                                                                //opposite result
-//                                                                if (match.getHomeTeamGoals() > match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() < inputMatch.getAwayTeamGoals() ||
-//                                                                        match.getHomeTeamGoals() < match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() > inputMatch.getAwayTeamGoals()) {
-//                                                                    points -= 2;
-//                                                                }
-//
-//                                                                // Update user points and input match points
-//                                                                currentUser.setPoints(currentUser.getPoints() + points);
-//                                                                inputMatch.setPointsCollected(points);
-//                                                            }
-//                                                        }
-//
-//                                                        @Override
-//                                                        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//                                                        }
-//
-//                                                        @Override
-//                                                        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-//
-//                                                        }
-//
-//                                                        @Override
-//                                                        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//                                                        }
-//
-//                                                        @Override
-//                                                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                                                        }
-//
-//                                                    });
-
-
                                                 }
 
                                             } else {
                                                 Log.e("Firebase", "Match details are null");
                                             }
-
-                                            //Searching for the user associated with Firebase Auth
-
-
                                         }
                                     }
 
