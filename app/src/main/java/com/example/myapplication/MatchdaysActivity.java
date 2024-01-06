@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewTreeViewModelKt;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -251,5 +253,14 @@ public class MatchdaysActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
+    }
+
+    //opening the popup with the rules
+    public void rules(View view) {
+        Dialog popupDialog = new Dialog(this);
+
+        popupDialog.setContentView(R.layout.rules);
+
+        popupDialog.show();
     }
 }

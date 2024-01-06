@@ -1,5 +1,6 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -230,15 +231,27 @@
 
         <ImageView
             android:id="@+id/signOutButton"
-            android:src="@drawable/signout"
             android:layout_width="65dp"
             android:layout_height="41dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="8dp"
             android:onClick="signOut"
+            android:src="@drawable/signout"
             tools:layout_editor_absoluteX="177dp"
             tools:layout_editor_absoluteY="-2dp"
             tools:srcCompat="@drawable/signout" />
+
+        <ImageView
+            android:id="@+id/rules"
+            android:layout_width="65dp"
+            android:layout_height="41dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="72dp"
+            android:onClick="rules"
+            android:src="@drawable/rules"
+            tools:layout_editor_absoluteX="177dp"
+            tools:layout_editor_absoluteY="-2dp"
+            tools:srcCompat="@drawable/rules" />
 
     </RelativeLayout>
 

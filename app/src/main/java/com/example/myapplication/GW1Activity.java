@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -9,7 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.model.Match;
+import com.example.myapplication.model.Matchday;
 import com.example.myapplication.model.Team;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +30,11 @@ public class GW1Activity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private DatabaseReference gamesRef;
 
+    private DatabaseReference matchDatabase;
+
+    private InputUtils inputUtils;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +43,8 @@ public class GW1Activity extends AppCompatActivity {
         addTeamsToDb();
 
         gamesRef = FirebaseDatabase.getInstance().getReference("games");
+
+        matchDatabase = FirebaseDatabase.getInstance().getReference("matches");
 
 
         // Retrieve and display games
@@ -161,6 +174,56 @@ public class GW1Activity extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> {
                     Log.e("Firebase", "Error adding " + team.getName() + ": " + e.getMessage());
+                });
+    }
+
+
+    public void confirmPredictionForFcsbCfr(View view) {
+        //test match
+        Match fcsbCfr = new Match("MSteCfr","T1","T2",1,1,"Demo1");
+        addMatchToDatabase(fcsbCfr);
+
+        EditText editTextFcsb = findViewById(R.id.leftTeamGoals1);
+        EditText editTextCfr = findViewById(R.id.rightTeamGoals1);
+
+        Button submitButton1 = findViewById(R.id.submitButton1);
+
+        submitButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int homeGoals = -1; //convention
+                int awayGoals = -1; //convention
+
+                homeGoals = Integer.parseInt(editTextFcsb.getText().toString());
+                awayGoals = Integer.parseInt(editTextCfr.getText().toString());
+
+                //Checking if the user entered a number for both teams
+                if(homeGoals == -1 && awayGoals == -1){
+                    editTextFcsb.setError("Enter a number of goals for the home team");
+                    editTextCfr.setError("Enter a number of goals for the away team");
+                    return;
+                } else if (homeGoals == -1) {
+                    editTextFcsb.setError("Enter a number of goals for the home team");
+                } else if (awayGoals == -1) {
+                    editTextCfr.setError("Enter a number of goals for the away team");
+                } else{
+                    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    if(firebaseUser != null) {
+                        String userId = firebaseUser.getUid();
+                        inputUtils.checkExistingInputs(GW1Activity.this, fcsbCfr.getId(), userId, homeGoals, awayGoals);
+                    }
+                }
+            }
+        });
+    }
+
+    private void addMatchToDatabase(Match match){
+        matchDatabase.child(match.getId()).setValue(match)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("Firebase", "Match " + match + " added successfully");
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("Firebase", "Error adding " + match + ": " + e.getMessage());
                 });
     }
 }

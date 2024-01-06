@@ -17,6 +17,15 @@ public class Match {
 
     }
 
+    public Match(String id, String homeTeamId, String awayTeamId, int homeTeamGoals, int awayTeamGoals, String matchdayId) {
+        this.id = id;
+        this.homeTeamId = homeTeamId;
+        this.awayTeamId = awayTeamId;
+        this.homeTeamGoals = homeTeamGoals;
+        this.awayTeamGoals = awayTeamGoals;
+        this.matchdayId = matchdayId;
+    }
+
     public void setId(String id) {
         this.id = id;
     }

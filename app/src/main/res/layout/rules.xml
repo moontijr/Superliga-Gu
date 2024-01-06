@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="850dp"
+    android:layout_gravity="center"
+    android:background="@drawable/popupbackground">
+
+
+    <TextView
+        android:id="@+id/Intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:text="Cum se acordă punctajul?"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="280dp"
+        android:layout_height="284dp"
+        android:layout_below="@id/Intro"
+        android:layout_marginTop="9dp"
+        android:text="-Se poate primi punctaj partial
+
++3P castigatoarea corecta/egal
+-2P la rezultat opus (ex: home predicted to win, but away wins)
++1P scor corect home
++1P scort corect away
++1P diferenta corecta
++1P marcator
++1P potm
++2P potw
+
+-1 dublaj/etapa
+"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+</RelativeLayout>
