@@ -110,9 +110,10 @@ public class InputUtils {
                                                                         }
 
                                                                         // Update user points and input match points
-                                                                        Log.d("InputMatch", "User colledted :" + points + " points");
+                                                                        Toast.makeText(context, "Ati primit " + points +
+                                                                                " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
+                                                                        Log.d("InputMatch", "User collected :" + points + " points");
                                                                         userSnapshot.getRef().child("points").setValue(currentUser.getPoints() + points);
-                                                                        DatabaseReference inputMatchesRef = FirebaseDatabase.getInstance().getReference().child("inputMatches");
                                                                     }
                                                                 } catch (Exception e) {
                                                                     Log.e("Firebase", "Error processing user data: " + e.getMessage());

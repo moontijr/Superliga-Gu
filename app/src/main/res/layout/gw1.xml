@@ -143,9 +143,10 @@
             android:id="@+id/submitButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirma"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:onClick="confirmPredictionForBotosaniCsu"
+            android:text="Confirma" />
 
 
 
@@ -210,9 +211,10 @@
             android:id="@+id/submitButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirma"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:onClick="confirmPredictionForDinPet"
+            android:text="Confirma" />
 
         <!-- Add more game layouts, buttons, and UI elements as needed -->
 
@@ -277,9 +279,10 @@
             android:id="@+id/submitButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirma"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:onClick="confirmPredictionForFarOsk"
+            android:text="Confirma" />
 
     </LinearLayout>
 
