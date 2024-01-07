@@ -34,18 +34,19 @@ public class InputUtils {
                 boolean inputExists = false;
 
                 for (DataSnapshot inputSnapshot : dataSnapshot.getChildren()) {
-                    InputMatch inputMatch = inputSnapshot.getValue(InputMatch.class);
+                    InputMatch existingInputMatch = inputSnapshot.getValue(InputMatch.class);
 
-                    if (inputMatch != null && inputMatch.getUserID().equals(userID) && inputMatch.getMatchID().equals(matchID)) {
+                    if (existingInputMatch != null && existingInputMatch.getUserID().equals(userID) && existingInputMatch.getMatchID().equals(matchID)) {
                         inputExists = true;
                         break;
                     }
+
                 }
 
                 if (inputExists) {
                     //Alert the users they cannot make anymore predictions for this specific game
                     Toast.makeText(context, "Deja ati introdus un scor pentru acest meci", Toast.LENGTH_SHORT).show();
-                    Log.d("InputMatch","There is already an input for this specific match");
+                    Log.d("InputMatch", "There is already an input for this specific match");
                 } else {
                     //Save the prediction and proceed to calculate their points
                     InputMatch inputMatch = new InputMatch(userID, matchID, homeTeamGoals, awayTeamGoals);
@@ -109,8 +110,9 @@ public class InputUtils {
                                                                         }
 
                                                                         // Update user points and input match points
+                                                                        Log.d("InputMatch", "User colledted :" + points + " points");
                                                                         userSnapshot.getRef().child("points").setValue(currentUser.getPoints() + points);
-                                                                        inputMatch.setPointsCollected(points);
+                                                                        DatabaseReference inputMatchesRef = FirebaseDatabase.getInstance().getReference().child("inputMatches");
                                                                     }
                                                                 } catch (Exception e) {
                                                                     Log.e("Firebase", "Error processing user data: " + e.getMessage());
@@ -139,6 +141,7 @@ public class InputUtils {
                             })
                             .addOnFailureListener(e -> Log.e("Firebase", "Error adding input match: " + e.getMessage()));
                 }
+
             }
 
             @Override
