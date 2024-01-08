@@ -37,20 +37,32 @@
         android:id="@+id/loginPopupButton"
         android:layout_width="245dp"
         android:layout_height="42dp"
-        android:text="@string/login"
-        app:layout_constraintTop_toBottomOf="@id/myImageViewSuperLiga"
+        android:text="@string/logare"
         app:layout_constraintBottom_toTopOf="@id/registerPopupButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/myImageViewSuperLiga"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
         android:id="@+id/registerPopupButton"
         android:layout_width="245dp"
         android:layout_height="43dp"
-        android:text="@string/register"
+        android:text="@string/nregistrare"
         app:layout_constraintTop_toBottomOf="@id/loginPopupButton"
-        app:layout_constraintBottom_toTopOf="@id/bottomTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/guru"
+        android:layout_width="226dp"
+        android:layout_height="59dp"
+        app:srcCompat="@drawable/guru_removebg_preview"
+        app:layout_constraintTop_toBottomOf="@id/myImageViewSuperLiga"
+        app:layout_constraintBottom_toTopOf="@id/loginPopupButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="250dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
