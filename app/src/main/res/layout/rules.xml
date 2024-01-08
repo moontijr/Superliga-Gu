@@ -5,7 +5,6 @@
     android:layout_gravity="center"
     android:background="@drawable/popupbackground">
 
-
     <TextView
         android:id="@+id/Intro"
         android:layout_width="wrap_content"
@@ -16,7 +15,7 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/rulesPoints"
         android:layout_width="280dp"
         android:layout_height="284dp"
         android:layout_below="@id/Intro"
@@ -35,6 +34,5 @@
 -1 dublaj/etapa
 "
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
 
 </RelativeLayout>

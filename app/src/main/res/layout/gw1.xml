@@ -90,7 +90,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="confirmPredictionForFcsbCfr"
-            android:text="Confirma" />
+            android:text="Confirmă scorul" />
 
         <Button
             android:id="@+id/doubleButton1"
@@ -99,7 +99,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="confirmDoubleForFcsbCfr"
-            android:text="Dubleaza" />
+            android:text="Dublează scorul" />
 
         <!-- Game 2 -->
 
@@ -168,7 +168,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="confirmPredictionForBotosaniCsu"
-            android:text="Confirma" />
+            android:text="Confirmă scorul" />
 
         <Button
             android:id="@+id/doubleButton2"
@@ -177,7 +177,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="confirmDoubleForBotCsu"
-            android:text="Dubleaza" />
+            android:text="Dublează scorul" />
 
 
         <!-- Game 2 -->
@@ -244,7 +244,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="confirmPredictionForDinPet"
-            android:text="Confirma" />
+            android:text="Confirmă scorul" />
 
         <Button
             android:id="@+id/doubleButton3"
@@ -253,12 +253,10 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="confirmDoubleForDinPet"
-            android:text="Dubleaza" />
+            android:text="Dublează scorul" />
 
 
-        <!-- Add more game layouts, buttons, and UI elements as needed -->
-
-        <!-- Game 2 -->
+        <!-- Game 4 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -306,7 +304,7 @@
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
 
-        <!-- More and Submit Buttons for Game 2 -->
+        <!-- More and Submit Buttons for Game 4 -->
         <Button
             android:id="@+id/moreButton4"
             android:layout_width="wrap_content"
@@ -322,7 +320,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="confirmPredictionForFarOsk"
-            android:text="Confirma" />
+            android:text="Confirmă scorul" />
 
         <Button
             android:id="@+id/doubleButton4"
@@ -331,7 +329,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="confirmDoubleForFarOsk"
-            android:text="Dubleaza" />
+            android:text="Dublează scorul" />
 
 
     </LinearLayout>
