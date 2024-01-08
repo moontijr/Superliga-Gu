@@ -110,9 +110,26 @@ public class GW1Activity extends AppCompatActivity {
                 EditText editTextCfr = findViewById(R.id.rightTeamGoals1);
                 editTextCfr.setHint(goluriCfrExpected);
 
-                Button teamPlayersPopupButton = findViewById(R.id.moreButton1);
+
+
+                Button potgwPopupButton = findViewById(R.id.potgwButton);
 
                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+
+                potgwPopupButton.setOnClickListener(v -> {
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (currentUser != null) {
+                        String username = currentUser.getEmail();
+
+                        DetailsUtils.showAllPlayersPopup(GW1Activity.this,username,"Demo1");
+                    } else {
+                    }
+                });
+
+
+                Button teamPlayersPopupButton = findViewById(R.id.moreButton1);
 
 
                 teamPlayersPopupButton.setOnClickListener(v -> {
@@ -125,6 +142,8 @@ public class GW1Activity extends AppCompatActivity {
                     } else {
                     }
                 });
+
+
 
 
 

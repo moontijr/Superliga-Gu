@@ -56,7 +56,42 @@ public class DetailsUtils {
                 }
 
                 if (selectedPlayer != null) {
-                    addPOTMInfo(loggedInPlayerId, selectedPlayer.getId(), gameId);
+                    addPOTMInfo(loggedInPlayerId, selectedPlayer.getId(), gameId,context);
+
+                    playersPopupDialog.dismiss();
+                }
+            }
+        });
+
+        playersPopupDialog.show();
+    }
+
+    public static void showAllPlayersPopup(Context context, String loggedInPlayerId, String gameweekId) {
+
+        Dialog playersPopupDialog = new Dialog(context);
+        playersPopupDialog.setContentView(R.layout.game1popup);
+
+        Spinner playerSpinner = playersPopupDialog.findViewById(R.id.playerSpinner);
+        AutoCompleteTextView playerNameAutoComplete = playersPopupDialog.findViewById(R.id.playerNameAutoComplete);
+        Button submitPlayerButton = playersPopupDialog.findViewById(R.id.submitPlayerButton);
+
+        List<Player> playerList = getAllPlayerList(context);
+        PlayerSpinnerAdapter spinnerAdapter = new PlayerSpinnerAdapter(context, playerList);
+        playerSpinner.setAdapter(spinnerAdapter);
+
+        submitPlayerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Player selectedPlayer;
+                if (playerSpinner.getSelectedItem() != null) {
+                    selectedPlayer = (Player) playerSpinner.getSelectedItem();
+                } else {
+                    String customPlayerName = playerNameAutoComplete.getText().toString().trim();
+                    selectedPlayer = findPlayerByName(playerList, customPlayerName);
+                }
+
+                if (selectedPlayer != null) {
+                    addPOTGWInfo(loggedInPlayerId, selectedPlayer.getId(), gameweekId,context);
 
                     playersPopupDialog.dismiss();
                 }
@@ -123,13 +158,58 @@ public class DetailsUtils {
     }
 
 
+    private static List<Player> getAllPlayerList(Context context) {
+        List<Player> playerList = new ArrayList<>();
+
+        DatabaseReference playersRef = FirebaseDatabase.getInstance().getReference().child("players");
+
+        // Combine players from both teams using OR condition
+        playersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot playerSnapshot : dataSnapshot.getChildren()) {
+                    Player player = playerSnapshot.getValue(Player.class);
+                    if (player != null) {
+                        playerList.add(player);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(context, "Failed to retrieve players", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        playersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot playerSnapshot : dataSnapshot.getChildren()) {
+                    Player player = playerSnapshot.getValue(Player.class);
+                    if (player != null) {
+                        playerList.add(player);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+                Toast.makeText(context, "Failed to retrieve players", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return playerList;
+    }
+
+
     private static void updatePlayerList(Context context, List<Player> playerList, ListView playerListView) {
         ArrayAdapter<Player> playerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, android.R.id.text1, playerList);
         playerListView.setAdapter(playerAdapter);
         playerAdapter.notifyDataSetChanged();
     }
 
-    public static void addPOTMInfo(String userId, String playerId, String gameId) {
+    public static void addPOTMInfo(String userId, String playerId, String gameId,Context context) {
         DatabaseReference potmInfoRef = FirebaseDatabase.getInstance().getReference().child("potm_info");
 
         potmInfoRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -155,13 +235,13 @@ public class DetailsUtils {
                         public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                             if (databaseError == null) {
                                 if(gameId == "M1")
-                                checkAndSetPoints("M1","P2");
+                                checkAndSetPoints("M1","P2",context);
                                 else if (gameId == "M20")
-                                checkAndSetPoints("M20","P13");
+                                checkAndSetPoints("M20","P13",context);
                                 else if(gameId == "M21")
-                                checkAndSetPoints("M21","P5");
+                                checkAndSetPoints("M21","P5",context);
                                 else if(gameId == "M22")
-                                    checkAndSetPoints("M22","P8");
+                                    checkAndSetPoints("M22","P8",context);
                             } else {
                                 // Handle the error during POTMInfo insertion
                                 Log.e("POTM", "Error adding POTMInfo: " + databaseError.getMessage());
@@ -170,6 +250,53 @@ public class DetailsUtils {
                     });
                 } else {
                     Log.d("POTM", "Entry with the same userId and gameId already exists.");
+                    ToastUtils.showToast("Deja ati facut o predictie pentru acest meci, ne pare rau!",context);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("POTM", "Error checking for existing entry: " + databaseError.getMessage());
+            }
+        });
+    }
+
+    public static void addPOTGWInfo(String userId, String playerId, String gameweekId,Context context) {
+        DatabaseReference potmInfoRef = FirebaseDatabase.getInstance().getReference().child("potgw_info");
+
+        potmInfoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean entryExists = false;
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    POTGWInfo existingPOTMInfo = snapshot.getValue(POTGWInfo.class);
+
+                    if (existingPOTMInfo != null && existingPOTMInfo.getUserId().equals(userId)
+                            && existingPOTMInfo.getGameweekId().equals(gameweekId)) {
+                        entryExists = true;
+                        break;
+                    }
+                }
+
+                if (!entryExists) {
+                    String potmInfoKey = potmInfoRef.push().getKey();
+                    POTGWInfo potmInfo = new POTGWInfo(userId, playerId, gameweekId);
+                    potmInfoRef.child(potmInfoKey).setValue(potmInfo, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                            if (databaseError == null) {
+                                if(gameweekId == "Demo1")
+                                    checkAndSetPointsForPotgw("Demo1","P2",context);
+                            } else {
+                                // Handle the error during POTMInfo insertion
+                                Log.e("POTM", "Error adding POTMInfo: " + databaseError.getMessage());
+                            }
+                        }
+                    });
+                } else {
+                    Log.d("POTM", "Entry with the same userId and gameId already exists.");
+                    ToastUtils.showToast("Deja ati facut o predictie pentru acest lucru, ne pare rau",context);
                 }
             }
 
@@ -181,39 +308,8 @@ public class DetailsUtils {
     }
 
 
-    public static void updatePointsForPOTM(String gameId, String playerId) {
-        DatabaseReference gamesRef = FirebaseDatabase.getInstance().getReference().child("games");
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 
-        if (currentUser == null) {
-            return;
-        }
-
-        String userId = currentUser.getUid();
-
-        gamesRef.child(gameId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Match game = dataSnapshot.getValue(Match.class);
-
-                if (game != null && game.getPotmId().equals(playerId)) {
-                    DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
-                    setPointsTo5();
-
-
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.e("UpdatePoints", "Error querying game data: " + databaseError.getMessage());
-            }
-        });
-    }
-
-    public static void checkAndSetPoints(String gameId, String playerId) {
+    public static void checkAndSetPoints(String gameId, String playerId,Context context) {
         DatabaseReference potmInfoRef = FirebaseDatabase.getInstance().getReference().child("potm_info");
 
         potmInfoRef.orderByChild("gameId").equalTo(gameId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -225,14 +321,52 @@ public class DetailsUtils {
                     POTMInfo potmInfo = snapshot.getValue(POTMInfo.class);
 
                     if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
+                        ToastUtils.showToast("Felicitari!",context);
                         setPointsTo5();
+                    }
+                    else {
+                        ToastUtils.showToast("Ghinion, incearca la meciul urmator!",context);
+                    }
+                }
+
+                if (entryExists) {
+                    ToastUtils.showToast("Felicitari, verifica clasamentul pentru a vedea cate puncte ai acum",context);
+                    setPointsTo5();
+                } else {
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public static void checkAndSetPointsForPotgw(String gameweekId, String playerId,Context context) {
+        DatabaseReference potmInfoRef = FirebaseDatabase.getInstance().getReference().child("potgw_info");
+
+        potmInfoRef.orderByChild("gameweekId").equalTo(gameweekId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean entryExists = false;
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    POTGWInfo potmInfo = snapshot.getValue(POTGWInfo.class);
+
+                    if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
+                        setPointsTo5();
+                        ToastUtils.showToast("Felicitari!",context);
+                    }
+                    else {
+                        ToastUtils.showToast("Ghinion, incearca la etapa urmatoare!",context);
                     }
                 }
 
                 if (entryExists) {
                     setPointsTo5();
+                    ToastUtils.showToast("Felicitari!",context);
                 } else {
-
                 }
             }
 

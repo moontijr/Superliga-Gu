@@ -46,8 +46,8 @@ public class MatchdaysActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("matchdays");
         matchDatabase = FirebaseDatabase.getInstance().getReference().child("games");
 
-        Matchday demoMatchday=new Matchday("Demo1");
-        Matchday demoMatchday2=new Matchday("Demo2");
+        Matchday demoMatchday=new Matchday("Demo1","P2");
+        Matchday demoMatchday2=new Matchday("Demo2","P3");
         Match match = new Match("M1","T1","T2",1,1,"Demo1","P2");
         Match match1 = new Match("M2","T1","T3",1,0,"Demo1","P1");
         Match match2 = new Match("M3","T3","T2",0,1,"Demo1","P1");
