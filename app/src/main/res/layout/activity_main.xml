@@ -35,23 +35,32 @@
 
     <Button
         android:id="@+id/loginPopupButton"
-        android:layout_width="245dp"
+        android:layout_width="0dp"
         android:layout_height="42dp"
         android:text="@string/logare"
         app:layout_constraintBottom_toTopOf="@id/registerPopupButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/myImageViewSuperLiga"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.7"
+        android:layout_marginTop="8dp" />
 
     <Button
         android:id="@+id/registerPopupButton"
-        android:layout_width="245dp"
+        android:layout_width="0dp"
         android:layout_height="43dp"
         android:text="@string/nregistrare"
         app:layout_constraintTop_toBottomOf="@id/loginPopupButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.7"
+        android:layout_marginTop="8dp" />
 
     <ImageView
         android:id="@+id/guru"
