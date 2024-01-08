@@ -79,6 +79,15 @@
             android:onClick="confirmPredictionForFcsbCfr"
             android:text="Confirma" />
 
+        <Button
+            android:id="@+id/doubleButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:onClick="confirmDoubleForFcsbCfr"
+            android:text="Dubleaza" />
+
         <!-- Game 2 -->
 
         <LinearLayout
@@ -148,6 +157,14 @@
             android:onClick="confirmPredictionForBotosaniCsu"
             android:text="Confirma" />
 
+        <Button
+            android:id="@+id/doubleButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:onClick="confirmDoubleForBotCsu"
+            android:text="Dubleaza" />
 
 
         <!-- Game 2 -->
@@ -216,6 +233,16 @@
             android:onClick="confirmPredictionForDinPet"
             android:text="Confirma" />
 
+        <Button
+            android:id="@+id/doubleButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:onClick="confirmDoubleForDinPet"
+            android:text="Dubleaza" />
+
+
         <!-- Add more game layouts, buttons, and UI elements as needed -->
 
         <!-- Game 2 -->
@@ -283,6 +310,16 @@
             android:layout_marginTop="16dp"
             android:onClick="confirmPredictionForFarOsk"
             android:text="Confirma" />
+
+        <Button
+            android:id="@+id/doubleButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:onClick="confirmDoubleForFarOsk"
+            android:text="Dubleaza" />
+
 
     </LinearLayout>
 

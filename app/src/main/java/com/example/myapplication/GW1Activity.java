@@ -387,6 +387,46 @@ public class GW1Activity extends AppCompatActivity {
 
     }
 
+    public void confirmDoubleForFcsbCfr(View view) {
+        //test match
+        Match fcsbCfr = new Match("MSteCfr", "T1", "T2", 1, 1, "Demo1");
+        addMatchToDatabase(fcsbCfr);
+
+        EditText editTextFcsb = findViewById(R.id.leftTeamGoals1);
+        EditText editTextCfr = findViewById(R.id.rightTeamGoals1);
+
+
+        int homeGoals = -1; //convention
+        int awayGoals = -1; //convention
+
+        try {
+            homeGoals = Integer.parseInt(editTextFcsb.getText().toString());
+            awayGoals = Integer.parseInt(editTextCfr.getText().toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        //Checking if the user entered a number for both teams
+        if (homeGoals == -1 || awayGoals == -1) {
+            if (homeGoals == -1) {
+                editTextFcsb.setError("Enter a number of goals for the home team");
+            }
+            if (awayGoals == -1) {
+                editTextCfr.setError("Enter a number of goals for the away team");
+            }
+            return;
+        }
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            String userId = firebaseUser.getUid();
+            InputUtils inputUtils = new InputUtils();
+            inputUtils.doubleInputs(GW1Activity.this, fcsbCfr.getId(), userId, homeGoals, awayGoals);
+        }
+
+    }
+
     public void confirmPredictionForBotosaniCsu(View view) {
         //test match
         Match botCsu = new Match("MBotCsu", "T10", "T11", 1, 3, "Demo1");
@@ -423,6 +463,45 @@ public class GW1Activity extends AppCompatActivity {
             String userId = firebaseUser.getUid();
             InputUtils inputUtils = new InputUtils();
             inputUtils.checkExistingInputs(GW1Activity.this, botCsu.getId(), userId, homeGoals, awayGoals);
+        }
+    }
+
+    public void confirmDoubleForBotCsu(View view) {
+        //test match
+        Match botCsu = new Match("MBotCsu", "T10", "T11", 1, 3, "Demo1");
+        addMatchToDatabase(botCsu);
+
+        EditText editTextBot = findViewById(R.id.leftTeamGoals2);
+        EditText editTextCsu = findViewById(R.id.rightTeamGoals2);
+
+
+        int homeGoals = -1; //convention
+        int awayGoals = -1; //convention
+
+        try {
+            homeGoals = Integer.parseInt(editTextBot.getText().toString());
+            awayGoals = Integer.parseInt(editTextCsu.getText().toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        //Checking if the user entered a number for both teams
+        if (homeGoals == -1 || awayGoals == -1) {
+            if (homeGoals == -1) {
+                editTextBot.setError("Enter a number of goals for the home team");
+            }
+            if (awayGoals == -1) {
+                editTextCsu.setError("Enter a number of goals for the away team");
+            }
+            return;
+        }
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            String userId = firebaseUser.getUid();
+            InputUtils inputUtils = new InputUtils();
+            inputUtils.doubleInputs(GW1Activity.this, botCsu.getId(), userId, homeGoals, awayGoals);
         }
     }
 
@@ -465,6 +544,45 @@ public class GW1Activity extends AppCompatActivity {
         }
     }
 
+    public void confirmDoubleForDinPet(View view) {
+        //test match
+        Match dinPet = new Match("MDinPet", "T3", "T4", 1, 2, "Demo1");
+        addMatchToDatabase(dinPet);
+
+        EditText editTextDin = findViewById(R.id.leftTeamGoals3);
+        EditText editTextPet = findViewById(R.id.rightTeamGoals3);
+
+
+        int homeGoals = -1; //convention
+        int awayGoals = -1; //convention
+
+        try {
+            homeGoals = Integer.parseInt(editTextDin.getText().toString());
+            awayGoals = Integer.parseInt(editTextPet.getText().toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        //Checking if the user entered a number for both teams
+        if (homeGoals == -1 || awayGoals == -1) {
+            if (homeGoals == -1) {
+                editTextDin.setError("Enter a number of goals for the home team");
+            }
+            if (awayGoals == -1) {
+                editTextPet.setError("Enter a number of goals for the away team");
+            }
+            return;
+        }
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            String userId = firebaseUser.getUid();
+            InputUtils inputUtils = new InputUtils();
+            inputUtils.doubleInputs(GW1Activity.this, dinPet.getId(), userId, homeGoals, awayGoals);
+        }
+    }
+
     public void confirmPredictionForFarOsk(View view) {
         //test match
         Match farOsk = new Match("MFarOsk", "T10", "T11", 3, 0, "Demo1");
@@ -501,6 +619,45 @@ public class GW1Activity extends AppCompatActivity {
             String userId = firebaseUser.getUid();
             InputUtils inputUtils = new InputUtils();
             inputUtils.checkExistingInputs(GW1Activity.this, farOsk.getId(), userId, homeGoals, awayGoals);
+        }
+    }
+
+    public void confirmDoubleForFarOsk(View view) {
+        //test match
+        Match farOsk = new Match("MFarOsk", "T10", "T11", 3, 0, "Demo1");
+        addMatchToDatabase(farOsk);
+
+        EditText editTextFar = findViewById(R.id.leftTeamGoals4);
+        EditText editTextOsk = findViewById(R.id.rightTeamGoals4);
+
+
+        int homeGoals = -1; //convention
+        int awayGoals = -1; //convention
+
+        try {
+            homeGoals = Integer.parseInt(editTextFar.getText().toString());
+            awayGoals = Integer.parseInt(editTextOsk.getText().toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        //Checking if the user entered a number for both teams
+        if (homeGoals == -1 || awayGoals == -1) {
+            if (homeGoals == -1) {
+                editTextFar.setError("Enter a number of goals for the home team");
+            }
+            if (awayGoals == -1) {
+                editTextOsk.setError("Enter a number of goals for the away team");
+            }
+            return;
+        }
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            String userId = firebaseUser.getUid();
+            InputUtils inputUtils = new InputUtils();
+            inputUtils.doubleInputs(GW1Activity.this, farOsk.getId(), userId, homeGoals, awayGoals);
         }
     }
 

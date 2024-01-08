@@ -48,12 +48,6 @@
             tools:layout_editor_absoluteY="-2dp"
             tools:srcCompat="@drawable/rules" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
         <!-- Add 10 ImageButton elements as needed -->
         <ImageButton
             android:id="@+id/gameweekButton1"
@@ -259,35 +253,6 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
-        <ImageView
-            android:id="@+id/signOutButton"
-            android:layout_width="65dp"
-            android:layout_height="41dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="8dp"
-            android:onClick="signOut"
-            android:src="@drawable/signout"
-            tools:layout_editor_absoluteX="177dp"
-            tools:layout_editor_absoluteY="-2dp"
-            tools:srcCompat="@drawable/signout" />
-
-        <ImageView
-            android:id="@+id/rules"
-            android:layout_width="65dp"
-            android:layout_height="41dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="72dp"
-            android:onClick="rules"
-            android:src="@drawable/rules"
-            tools:layout_editor_absoluteX="177dp"
-            tools:layout_editor_absoluteY="-2dp"
-            tools:srcCompat="@drawable/rules" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2x" />
 
     </RelativeLayout>
 
