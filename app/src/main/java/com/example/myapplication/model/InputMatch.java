@@ -20,6 +20,9 @@ public class InputMatch {
         return pointsCollected;
     }
 
+    public InputMatch() {
+    }
+
     public void setPointsCollected(int pointsCollected) {
         this.pointsCollected = pointsCollected;
     }
