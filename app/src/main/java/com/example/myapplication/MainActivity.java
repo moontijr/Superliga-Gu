@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, "New user registered.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Bine ați venit!", Toast.LENGTH_SHORT).show();
 
                             addUserToDb(username, password, familyName, givenName, email);
 
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, "User connected.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Bine ați revenit!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MatchdaysActivity.class));
                         }else {
                             Toast.makeText(MainActivity.this, "Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

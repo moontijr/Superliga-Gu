@@ -34,7 +34,7 @@
             android:layout_marginEnd="16dp"
             android:clickable="true"
             android:onClick="signOut"
-            android:src="@drawable/signout"
+            android:src="@drawable/signout_transparent"
             tools:layout_editor_absoluteY="-2dp"
             tools:srcCompat="@drawable/signout_removebg_preview" />
 
@@ -47,7 +47,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:clickable="true"
-            android:src="@drawable/rules"
+            android:onClick="rules"
+            android:src="@drawable/rules_transparent"
             tools:layout_editor_absoluteY="-2dp"
             tools:srcCompat="@drawable/rules_removebg_preview" />
 

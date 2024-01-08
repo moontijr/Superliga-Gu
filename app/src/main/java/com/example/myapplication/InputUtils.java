@@ -109,9 +109,15 @@ public class InputUtils {
                                                                             points -= 2;
                                                                         }
 
-                                                                        // Update user points and input match points
-                                                                        Toast.makeText(context, "Ati primit " + points +
-                                                                                " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
+                                                                        // Update user points
+                                                                        Toast.makeText(context, "Ați prezis: " + inputMatch.getHomeTeamGoals() + "-" + inputMatch.getAwayTeamGoals(), Toast.LENGTH_SHORT).show();
+                                                                        if(points>=0){
+                                                                            Toast.makeText(context, "Ati primit " + points +
+                                                                                    " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
+                                                                        }else {
+                                                                            Toast.makeText(context, "Ati pierdut " + points +
+                                                                                    " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
+                                                                        }
                                                                         Log.d("InputMatch", "User collected :" + points + " points");
                                                                         userSnapshot.getRef().child("points").setValue(currentUser.getPoints() + points);
                                                                     }
@@ -240,9 +246,15 @@ public class InputUtils {
 
                                                                         points = points * 2;
 
-                                                                        // Update user points and input match points
-                                                                        Toast.makeText(context, "(DUBLAJ) Ati primit " + points +
-                                                                                " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
+                                                                        // Update user points
+                                                                        Toast.makeText(context, "Ați prezis: " + inputMatch.getHomeTeamGoals() + "-" + inputMatch.getAwayTeamGoals(), Toast.LENGTH_SHORT).show();
+                                                                        if (points >= 0) {
+                                                                            Toast.makeText(context, "(DUBLAJ) Ați primit " + points +
+                                                                                    " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
+                                                                        } else {
+                                                                            Toast.makeText(context, "(DUBLAJ) Ați pierdut " + points +
+                                                                                    " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
+                                                                        }
                                                                         Log.d("InputMatch", "User collected :" + points + " points");
                                                                         userSnapshot.getRef().child("points").setValue(currentUser.getPoints() + points);
                                                                     }
