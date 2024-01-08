@@ -69,7 +69,7 @@ public class DetailsUtils {
     public static void showAllPlayersPopup(Context context, String loggedInPlayerId, String gameweekId) {
 
         Dialog playersPopupDialog = new Dialog(context);
-        playersPopupDialog.setContentView(R.layout.game1popup);
+        playersPopupDialog.setContentView(R.layout.potgwpopup);
 
         Spinner playerSpinner = playersPopupDialog.findViewById(R.id.playerSpinner);
         AutoCompleteTextView playerNameAutoComplete = playersPopupDialog.findViewById(R.id.playerNameAutoComplete);
