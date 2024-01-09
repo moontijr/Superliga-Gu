@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.utils;
 
 import com.example.myapplication.model.Match;
 import com.google.firebase.database.DataSnapshot;

@@ -1,17 +1,18 @@
-package com.example.myapplication;
+package com.example.myapplication.model;
 
-public class POTMInfo {
+public class POTGWInfo {
     private String userId;
     private String playerId;
-    private String gameId;
+    private String gameweekId;
 
-    public POTMInfo() {
-    }
-
-    public POTMInfo(String userId, String playerId, String gameId) {
+    public POTGWInfo(String userId, String playerId, String gameweekId) {
         this.userId = userId;
         this.playerId = playerId;
-        this.gameId = gameId;
+        this.gameweekId = gameweekId;
+    }
+
+    public POTGWInfo(){
+
     }
 
     public String getUserId() {
@@ -30,11 +31,11 @@ public class POTMInfo {
         this.playerId = playerId;
     }
 
-    public String getGameId() {
-        return gameId;
+    public String getGameweekId() {
+        return gameweekId;
     }
 
-    public void setGameId(String gameId) {
-        this.gameId = gameId;
+    public void setGameweekId(String gameweekId) {
+        this.gameweekId = gameweekId;
     }
 }

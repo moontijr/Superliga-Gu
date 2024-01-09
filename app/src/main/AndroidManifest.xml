@@ -15,10 +15,10 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".MatchdaysActivity"
+            android:name=".activity.MatchdaysActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,23 +26,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LeaderboardActivity"
+        <activity android:name=".activity.LeaderboardActivity"
             android:exported="false"/>
-        <activity android:name=".GW1Activity"
+        <activity android:name=".activity.GW1Activity"
             android:exported="false"/>
-        <activity android:name=".GW2Activity"
+        <activity android:name=".activity.GW2Activity"
             android:exported="false"/>
-        <activity android:name=".GW3Activity"
+        <activity android:name=".activity.GW3Activity"
             android:exported="false"/>
-        <activity android:name=".GW4Activity"
+        <activity android:name=".activity.GW4Activity"
             android:exported="false"/>
-        <activity android:name=".GW5Activity"
+        <activity android:name=".activity.GW5Activity"
             android:exported="false"/>
-        <activity android:name=".GW6Activity"
+        <activity android:name=".activity.GW6Activity"
             android:exported="false"/>
-        <activity android:name=".GW7Activity"
+        <activity android:name=".activity.GW7Activity"
             android:exported="false"/>
-        <activity android:name=".GW8Activity"
+        <activity android:name=".activity.GW8Activity"
             android:exported="false"/>
     </application>
 

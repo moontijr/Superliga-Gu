@@ -1,6 +1,6 @@
 package com.example.myapplication.repository;
 
-import com.example.myapplication.User;
+import com.example.myapplication.model.User;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;

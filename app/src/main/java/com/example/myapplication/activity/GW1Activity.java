@@ -1,19 +1,22 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.statistics.LinearRegression;
+import com.example.myapplication.R;
 import com.example.myapplication.model.Match;
-import com.example.myapplication.model.Matchday;
 import com.example.myapplication.model.Team;
+import com.example.myapplication.model.User;
+import com.example.myapplication.utils.DetailsUtils;
+import com.example.myapplication.utils.FirebaseMatchUtils;
+import com.example.myapplication.utils.InputUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

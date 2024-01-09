@@ -1,10 +1,12 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class GW5Activity extends AppCompatActivity {
+import com.example.myapplication.R;
+
+public class GW3Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
