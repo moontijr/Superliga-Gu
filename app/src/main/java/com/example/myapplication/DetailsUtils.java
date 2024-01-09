@@ -321,8 +321,8 @@ public class DetailsUtils {
                     POTMInfo potmInfo = snapshot.getValue(POTMInfo.class);
 
                     if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
-                        ToastUtils.showToast("Felicitari!",context);
-                        setPointsTo5();
+                        ToastUtils.showToast("Felicitari, ai primit 3 puncte!",context);
+                        setPointsTo3();
                     }
                     else {
                         ToastUtils.showToast("Ghinion, incearca la meciul urmator!",context);
@@ -331,7 +331,7 @@ public class DetailsUtils {
 
                 if (entryExists) {
                     ToastUtils.showToast("Felicitari, verifica clasamentul pentru a vedea cate puncte ai acum",context);
-                    setPointsTo5();
+                    setPointsTo3();
                 } else {
                 }
             }
@@ -356,7 +356,7 @@ public class DetailsUtils {
 
                     if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
                         setPointsTo5();
-                        ToastUtils.showToast("Felicitari!",context);
+                        ToastUtils.showToast("Felicitari, ai primit 5 puncte!",context);
                     }
                     else {
                         ToastUtils.showToast("Ghinion, incearca la etapa urmatoare!",context);
@@ -391,6 +391,42 @@ public class DetailsUtils {
                     if (currentUser != null && currentUser.getEmail().equals(user.getMailAdress())) {
                         int currentPoints = user.getPoints();
                         int newPoints = currentPoints + 5;
+
+                        userSnapshot.getRef().child("points").setValue(newPoints)
+                                .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        Log.d("DEBUG", "Points updated successfully to " + newPoints + " for user: " + currentUser.getUid());
+                                    } else {
+                                        Log.e("DEBUG", "Error updating points: " + task.getException().getMessage());
+                                    }
+                                });
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("DEBUG", "Database error: " + error.getMessage());
+            }
+        });
+    }
+
+
+    public static void setPointsTo3() {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
+
+        usersRef.orderByChild("points").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    User user = userSnapshot.getValue(User.class);
+
+                    if (currentUser != null && currentUser.getEmail().equals(user.getMailAdress())) {
+                        int currentPoints = user.getPoints();
+                        int newPoints = currentPoints + 3;
 
                         userSnapshot.getRef().child("points").setValue(newPoints)
                                 .addOnCompleteListener(task -> {

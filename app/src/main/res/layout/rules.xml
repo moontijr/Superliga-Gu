@@ -10,29 +10,106 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="125dp"
         android:text="Cum se acordă punctajul?"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/rulesPoints"-->
+<!--        android:layout_width="280dp"-->
+<!--        android:layout_height="284dp"-->
+<!--        android:layout_below="@id/Intro"-->
+<!--        android:layout_marginTop="16dp" -->
+<!--    android:text="-Se poate primi punctaj partial-->
+
+<!--    +3P castigatoarea corecta/egal-->
+<!--    -2P la rezultat opus (ex: home predicted to win, but away wins)-->
+<!--    +1P scor corect home-->
+<!--    +1P scort corect away-->
+<!--    +1P diferenta corecta-->
+<!--    +1P marcator-->
+<!--    +1P potm-->
+<!--    +2P potw-->
+
+<!--    -1 dublaj/etapa-->
+<!--    "-->
+<!--    android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--    android:layout_marginStart="16dp"-->
+<!--    android:layout_marginEnd="16dp" />-->
 
     <TextView
-        android:id="@+id/rulesPoints"
+        android:id="@+id/pointsDescription1"
         android:layout_width="280dp"
-        android:layout_height="284dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/Intro"
-        android:layout_marginTop="9dp"
-        android:text="-Se poate primi punctaj partial
+        android:layout_marginTop="16dp"
+        android:text="+3P castigatoarea corecta/egal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
-+3P castigatoarea corecta/egal
--2P la rezultat opus (ex: home predicted to win, but away wins)
-+1P scor corect home
-+1P scort corect away
-+1P diferenta corecta
-+1P marcator
-+1P potm
-+2P potw
+    <TextView
+        android:id="@+id/pointsDescription2"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pointsDescription1"
+        android:layout_marginTop="8dp"
+        android:text="-2P la rezultat opus (ex: home predicted to win, but away wins)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
--1 dublaj/etapa
-"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+    <TextView
+        android:id="@+id/pointsDescription3"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pointsDescription2"
+        android:layout_marginTop="8dp"
+        android:text="+1P scor corect home"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+    <TextView
+        android:id="@+id/pointsDescription4"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pointsDescription3"
+        android:layout_marginTop="8dp"
+        android:text="+1P scort corect away"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+    <TextView
+        android:id="@+id/pointsDescription5"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pointsDescription4"
+        android:layout_marginTop="8dp"
+        android:text="+1P diferenta corecta"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+    <TextView
+        android:id="@+id/pointsDescription6"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pointsDescription5"
+        android:layout_marginTop="8dp"
+        android:text="+3P Jucatorul Meciului"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+    <TextView
+        android:id="@+id/pointsDescription7"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pointsDescription6"
+        android:layout_marginTop="8dp"
+        android:text="+5P Jucatorul Etapei"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 </RelativeLayout>

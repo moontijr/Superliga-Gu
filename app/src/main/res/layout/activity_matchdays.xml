@@ -33,7 +33,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:clickable="true"
-            android:onClick="signOut"
             android:src="@drawable/signout_transparent"
             tools:layout_editor_absoluteY="-2dp"
             tools:srcCompat="@drawable/signout_removebg_preview" />
@@ -55,7 +54,7 @@
         <!-- ImageButton 1 -->
         <ImageButton
             android:id="@+id/gameweekButton1"
-            android:layout_width="336dp"
+            android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/logoImageView"
             android:layout_alignParentEnd="true"
@@ -64,13 +63,16 @@
             android:clickable="true"
             android:contentDescription="TODO"
             android:onClick="onGameweek1ButtonClick"
-            android:src="@drawable/poza_arena"
-            tools:srcCompat="@drawable/etapalpf" />
+            android:src="@drawable/incercare_superliga"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            />
 
         <!-- ImageButton 2 -->
         <ImageButton
             android:id="@+id/gameweekButton2"
-            android:layout_width="336dp"
+            android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton1"
             android:layout_alignParentEnd="true"
@@ -79,12 +81,15 @@
             android:clickable="true"
             android:onClick="onGameweek2ButtonClick"
             android:src="@drawable/poza_arena"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"/>
 
         <!-- ImageButton 3 -->
         <ImageButton
             android:id="@+id/gameweekButton3"
-            android:layout_width="336dp"
+            android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton2"
             android:layout_alignParentEnd="true"
@@ -93,12 +98,15 @@
             android:clickable="true"
             android:onClick="onGameweek3ButtonClick"
             android:src="@drawable/poza_arena"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"/>
 
         <!-- ImageButton 4 -->
         <ImageButton
             android:id="@+id/gameweekButton4"
-            android:layout_width="336dp"
+            android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton3"
             android:layout_alignParentEnd="true"
@@ -107,12 +115,15 @@
             android:clickable="true"
             android:onClick="onGameweek4ButtonClick"
             android:src="@drawable/poza_arena"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"/>
 
         <!-- ImageButton 5 -->
         <ImageButton
             android:id="@+id/gameweekButton5"
-            android:layout_width="336dp"
+            android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton4"
             android:layout_alignParentEnd="true"
@@ -121,12 +132,15 @@
             android:clickable="true"
             android:onClick="onGameweek5ButtonClick"
             android:src="@drawable/poza_arena"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"/>
 
         <!-- ImageButton 6 -->
         <ImageButton
             android:id="@+id/gameweekButton6"
-            android:layout_width="336dp"
+            android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton5"
             android:layout_alignParentEnd="true"
@@ -135,12 +149,15 @@
             android:clickable="true"
             android:onClick="onGameweek6ButtonClick"
             android:src="@drawable/poza_arena"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"/>
 
         <!-- ImageButton 7 -->
         <ImageButton
             android:id="@+id/gameweekButton7"
-            android:layout_width="336dp"
+            android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton6"
             android:layout_alignParentEnd="true"
@@ -149,12 +166,15 @@
             android:clickable="true"
             android:onClick="onGameweek7ButtonClick"
             android:src="@drawable/poza_arena"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"/>
 
         <!-- ImageButton 8 -->
         <ImageButton
             android:id="@+id/gameweekButton8"
-            android:layout_width="336dp"
+            android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton7"
             android:layout_alignParentEnd="true"
@@ -163,7 +183,10 @@
             android:clickable="true"
             android:onClick="onGameweek8ButtonClick"
             android:src="@drawable/poza_arena"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"/>
 
     </RelativeLayout>
 

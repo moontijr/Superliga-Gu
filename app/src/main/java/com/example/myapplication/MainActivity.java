@@ -54,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Firebase", "Firebase initialized successfully");
 
 
-
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
         playersDatabase = FirebaseDatabase.getInstance().getReference().child("players");
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("users");

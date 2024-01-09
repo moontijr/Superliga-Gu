@@ -43,6 +43,21 @@ public class MatchdaysActivity extends AppCompatActivity {
         ImageView logoImageView = findViewById(R.id.logoImageView);
 
 
+        ImageView signOutButton = findViewById(R.id.signOutButton);
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOut(v);
+            }
+        });
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut(view);
+            }
+        });
+
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("matchdays");
         matchDatabase = FirebaseDatabase.getInstance().getReference().child("games");
 
@@ -269,8 +284,14 @@ public class MatchdaysActivity extends AppCompatActivity {
 
     //signing out from the app through Firebase
     public void signOut(View view) {
+        Log.d("SignOut", "Sign out button clicked");
         FirebaseAuth.getInstance().signOut();
+        Log.d("SignOut", "Firebase sign out successful");
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        Log.d("SignOut", "Starting MainActivity");
         finish();
     }
+
+
+
 }
