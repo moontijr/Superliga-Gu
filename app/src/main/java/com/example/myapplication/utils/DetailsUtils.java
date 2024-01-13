@@ -322,18 +322,16 @@ public class DetailsUtils {
                     POTMInfo potmInfo = snapshot.getValue(POTMInfo.class);
 
                     if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
-                        ToastUtils.showToast("Felicitari, ai primit 3 puncte!",context);
                         setPointsTo3();
                     }
                     else {
-                        ToastUtils.showToast("Ghinion, incearca la meciul urmator!",context);
                     }
                 }
 
                 if (entryExists) {
-                    ToastUtils.showToast("Felicitari, verifica clasamentul pentru a vedea cate puncte ai acum",context);
-                    setPointsTo3();
+                    ToastUtils.showToast("Felicitari, ai primit 3 puncte!",context);
                 } else {
+                    ToastUtils.showToast("Ghinion, incearca la meciul urmator!",context);
                 }
             }
 
@@ -357,17 +355,14 @@ public class DetailsUtils {
 
                     if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
                         setPointsTo5();
-                        ToastUtils.showToast("Felicitari, ai primit 5 puncte!",context);
-                    }
-                    else {
-                        ToastUtils.showToast("Ghinion, incearca la etapa urmatoare!",context);
                     }
                 }
 
                 if (entryExists) {
                     setPointsTo5();
-                    ToastUtils.showToast("Felicitari!",context);
+                    ToastUtils.showToast("Felicitari, ai primit 5 puncte!",context);
                 } else {
+                    ToastUtils.showToast("Ghinion, incearca la etapa urmatoare!",context);
                 }
             }
 
