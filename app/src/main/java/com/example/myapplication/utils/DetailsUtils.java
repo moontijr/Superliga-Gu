@@ -356,6 +356,7 @@ public class DetailsUtils {
 
                     if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
                         setPointsTo5();
+                        entryExists = true;
                     }
                 }
 
