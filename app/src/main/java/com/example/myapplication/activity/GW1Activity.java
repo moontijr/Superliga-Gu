@@ -123,7 +123,7 @@ public class GW1Activity extends AppCompatActivity {
                     if (currentUser != null) {
                         String username = currentUser.getEmail();
 
-                        DetailsUtils.showAllPlayersPopup(GW1Activity.this,username,"Demo1");
+                        DetailsUtils.showAllPlayersPopup(GW1Activity.this, username, "Demo1");
                     } else {
                     }
                 });
@@ -144,32 +144,31 @@ public class GW1Activity extends AppCompatActivity {
                 });
 
 
-
                 //botosani-csu
-                double[] botosaniGoluri = getTeamGoalsScoredExpected(games,"T10");
-                double[] botosaniGoluriLuate= getTeamGoalsConcededExpected(games,"T10");
+                double[] botosaniGoluri = getTeamGoalsScoredExpected(games, "T10");
+                double[] botosaniGoluriLuate = getTeamGoalsConcededExpected(games, "T10");
 
-                LinearRegression linearRegressionBotosani = new LinearRegression(botosaniGoluri,botosaniGoluriLuate);
-                double inputBotosani = getNumberOfGamesForATeamFromGames(games,"T10"); // Some input value, such as the number of past games
+                LinearRegression linearRegressionBotosani = new LinearRegression(botosaniGoluri, botosaniGoluriLuate);
+                double inputBotosani = getNumberOfGamesForATeamFromGames(games, "T10"); // Some input value, such as the number of past games
 
                 double predictedHomeTeamGoalsBotosani = linearRegression.predictHomeTeamGoals(inputBotosani);
                 double predictedAwayTeamGoalsBotosani = linearRegression.predictAwayTeamGoals(inputBotosani);
 
-                double[] csuGoluri = getTeamGoalsScoredExpected(games,"T11");
-                double[] csuGoluriLuate= getTeamGoalsConcededExpected(games,"T11");
+                double[] csuGoluri = getTeamGoalsScoredExpected(games, "T11");
+                double[] csuGoluriLuate = getTeamGoalsConcededExpected(games, "T11");
 
-                LinearRegression linearRegressionCsu = new LinearRegression(csuGoluri,csuGoluriLuate);
-                double inputCsu = getNumberOfGamesForATeamFromGames(games,"T11"); // Some input value, such as the number of past games
+                LinearRegression linearRegressionCsu = new LinearRegression(csuGoluri, csuGoluriLuate);
+                double inputCsu = getNumberOfGamesForATeamFromGames(games, "T11"); // Some input value, such as the number of past games
 
                 double predictedHomeTeamGoalsCsu = linearRegressionCsu.predictHomeTeamGoals(inputCsu);
                 double predictedAwayTeamGoalsCsu = linearRegressionBotosani.predictAwayTeamGoals(inputCsu);
 
-                String goluriBotosaniMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T10",predictedHomeTeamGoalsBotosani,games);
-                String goluriBotosaniPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T10",predictedAwayTeamGoalsBotosani,games);
-                String goluriCsuPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T11",predictedHomeTeamGoalsCsu,games);
-                String goluriCsuMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T11",predictedAwayTeamGoalsCsu,games);
-                String goluriBotosaniExpected=FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriBotosaniMarcate,goluriCsuPrimite);
-                String goluriCsuExpected=FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriCsuMarcate,goluriBotosaniPrimite);
+                String goluriBotosaniMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T10", predictedHomeTeamGoalsBotosani, games);
+                String goluriBotosaniPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T10", predictedAwayTeamGoalsBotosani, games);
+                String goluriCsuPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T11", predictedHomeTeamGoalsCsu, games);
+                String goluriCsuMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T11", predictedAwayTeamGoalsCsu, games);
+                String goluriBotosaniExpected = FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriBotosaniMarcate, goluriCsuPrimite);
+                String goluriCsuExpected = FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriCsuMarcate, goluriBotosaniPrimite);
                 EditText editTextBotosani = findViewById(R.id.leftTeamGoals2);
                 editTextBotosani.setHint(goluriBotosaniExpected);
                 EditText editTextCsu = findViewById(R.id.rightTeamGoals2);
@@ -191,38 +190,37 @@ public class GW1Activity extends AppCompatActivity {
 
                 //dinamo-petrolul
 
-                double[] dinamoGoluri = getTeamGoalsScoredExpected(games,"T3");
-                double[] dinamoGoluriLuate= getTeamGoalsConcededExpected(games,"T3");
+                double[] dinamoGoluri = getTeamGoalsScoredExpected(games, "T3");
+                double[] dinamoGoluriLuate = getTeamGoalsConcededExpected(games, "T3");
 
-                LinearRegression linearRegressionDinamo = new LinearRegression(dinamoGoluri,dinamoGoluriLuate);
-                double inputDinamo = getNumberOfGamesForATeamFromGames(games,"T13"); // Some input value, such as the number of past games
+                LinearRegression linearRegressionDinamo = new LinearRegression(dinamoGoluri, dinamoGoluriLuate);
+                double inputDinamo = getNumberOfGamesForATeamFromGames(games, "T13"); // Some input value, such as the number of past games
 
                 double predictedHomeTeamGoalsDinamo = linearRegressionDinamo.predictHomeTeamGoals(inputDinamo);
                 double predictedAwayTeamGoalsDinamo = linearRegressionDinamo.predictAwayTeamGoals(inputDinamo);
 
-                double[] petrolulGoluri = getTeamGoalsScoredExpected(games,"T4");
-                double[] petrolulGoluriLuate= getTeamGoalsConcededExpected(games,"T4");
+                double[] petrolulGoluri = getTeamGoalsScoredExpected(games, "T4");
+                double[] petrolulGoluriLuate = getTeamGoalsConcededExpected(games, "T4");
 
-                LinearRegression linearRegressionPetrolul = new LinearRegression(petrolulGoluri,petrolulGoluriLuate);
-                double inputPetrolul = getNumberOfGamesForATeamFromGames(games,"T4"); // Some input value, such as the number of past games
+                LinearRegression linearRegressionPetrolul = new LinearRegression(petrolulGoluri, petrolulGoluriLuate);
+                double inputPetrolul = getNumberOfGamesForATeamFromGames(games, "T4"); // Some input value, such as the number of past games
 
                 double predictedHomeTeamGoalsPetrolul = linearRegressionPetrolul.predictHomeTeamGoals(inputPetrolul);
                 double predictedAwayTeamGoalsPetrolul = linearRegressionBotosani.predictAwayTeamGoals(inputPetrolul);
 
                 // dinamo-petrolul
-                String goluriDinamoMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T3",predictedHomeTeamGoalsDinamo,games);
-                String goluriDinamoPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T3",predictedAwayTeamGoalsDinamo,games);
-                String goluriPetrolulPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T4",predictedHomeTeamGoalsPetrolul,games);
-                String goluriPetrolulMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T4",predictedAwayTeamGoalsPetrolul,games);
-                String goluriDinamoExpected=FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriDinamoMarcate,goluriPetrolulPrimite);
-                String goluriPetrolulExpected=FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriPetrolulMarcate,goluriDinamoPrimite);
+                String goluriDinamoMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T3", predictedHomeTeamGoalsDinamo, games);
+                String goluriDinamoPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T3", predictedAwayTeamGoalsDinamo, games);
+                String goluriPetrolulPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T4", predictedHomeTeamGoalsPetrolul, games);
+                String goluriPetrolulMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T4", predictedAwayTeamGoalsPetrolul, games);
+                String goluriDinamoExpected = FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriDinamoMarcate, goluriPetrolulPrimite);
+                String goluriPetrolulExpected = FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriPetrolulMarcate, goluriDinamoPrimite);
                 EditText editTextDinamo = findViewById(R.id.leftTeamGoals3);
                 editTextDinamo.setHint(goluriDinamoExpected);
                 EditText editTextPetrolul = findViewById(R.id.rightTeamGoals3);
                 editTextPetrolul.setHint(goluriPetrolulExpected);
 
                 Button teamPlayersPopupButton3 = findViewById(R.id.moreButton3);
-
 
 
                 teamPlayersPopupButton3.setOnClickListener(v -> {
@@ -237,15 +235,13 @@ public class GW1Activity extends AppCompatActivity {
                 });
 
 
-
-
                 //farul-sepsi
-                String goluriFarulMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T12",1.4,games);
-                String goluriFarulPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T12 ",1.3,games);
-                String goluriSepsiPrimite=FirebaseMatchUtils.calculateExpectedGoalsConceded("T13",3.2,games);
-                String goluriSepsiMarcate=FirebaseMatchUtils.calculateExpectedGoalsScored("T13",1.4,games);
-                String goluriFarulExpected=FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriFarulMarcate,goluriSepsiPrimite);
-                String goluriSepsiExpected=FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriSepsiMarcate,goluriFarulPrimite);
+                String goluriFarulMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T12", 1.4, games);
+                String goluriFarulPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T12 ", 1.3, games);
+                String goluriSepsiPrimite = FirebaseMatchUtils.calculateExpectedGoalsConceded("T13", 3.2, games);
+                String goluriSepsiMarcate = FirebaseMatchUtils.calculateExpectedGoalsScored("T13", 1.4, games);
+                String goluriFarulExpected = FirebaseMatchUtils.homeTeamGoalsExpectedFinal(goluriFarulMarcate, goluriSepsiPrimite);
+                String goluriSepsiExpected = FirebaseMatchUtils.awayTeamGoalsExpectedFinal(goluriSepsiMarcate, goluriFarulPrimite);
                 EditText editTextFarul = findViewById(R.id.leftTeamGoals4);
                 editTextFarul.setHint(goluriFarulExpected);
                 EditText editTextSepsi = findViewById(R.id.rightTeamGoals4);
@@ -359,11 +355,11 @@ public class GW1Activity extends AppCompatActivity {
         return expectedGoalsArray;
     }
 
-    private static double getNumberOfGamesForATeamFromGames(List<Match> matches, String teamId){
-        Double nrOfGames=0.0;
-        for(Match match : matches){
-            if(match.getHomeTeamId().equals(teamId)||match.getAwayTeamId().equals(teamId))
-                nrOfGames=nrOfGames+=1;
+    private static double getNumberOfGamesForATeamFromGames(List<Match> matches, String teamId) {
+        Double nrOfGames = 0.0;
+        for (Match match : matches) {
+            if (match.getHomeTeamId().equals(teamId) || match.getAwayTeamId().equals(teamId))
+                nrOfGames = nrOfGames += 1;
         }
         return nrOfGames;
 
@@ -445,7 +441,7 @@ public class GW1Activity extends AppCompatActivity {
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid();
             InputUtils inputUtils = new InputUtils();
-            inputUtils.doubleInputs(GW1Activity.this, fcsbCfr.getId(), userId, homeGoals, awayGoals);
+            inputUtils.doubleInputs(GW1Activity.this, fcsbCfr.getMatchdayId(), fcsbCfr.getId(), userId, homeGoals, awayGoals);
         }
 
     }
@@ -524,7 +520,7 @@ public class GW1Activity extends AppCompatActivity {
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid();
             InputUtils inputUtils = new InputUtils();
-            inputUtils.doubleInputs(GW1Activity.this, botCsu.getId(), userId, homeGoals, awayGoals);
+            inputUtils.doubleInputs(GW1Activity.this, botCsu.getMatchdayId(), botCsu.getId(), userId, homeGoals, awayGoals);
         }
     }
 
@@ -602,7 +598,7 @@ public class GW1Activity extends AppCompatActivity {
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid();
             InputUtils inputUtils = new InputUtils();
-            inputUtils.doubleInputs(GW1Activity.this, dinPet.getId(), userId, homeGoals, awayGoals);
+            inputUtils.doubleInputs(GW1Activity.this, dinPet.getMatchdayId(),dinPet.getId(), userId, homeGoals, awayGoals);
         }
     }
 
@@ -680,7 +676,7 @@ public class GW1Activity extends AppCompatActivity {
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid();
             InputUtils inputUtils = new InputUtils();
-            inputUtils.doubleInputs(GW1Activity.this, farOsk.getId(), userId, homeGoals, awayGoals);
+            inputUtils.doubleInputs(GW1Activity.this, farOsk.getMatchdayId(),farOsk.getId(), userId, homeGoals, awayGoals);
         }
     }
 

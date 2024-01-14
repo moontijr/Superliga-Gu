@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.myapplication.model.DoubleMatch;
 import com.example.myapplication.model.InputMatch;
 import com.example.myapplication.model.Match;
 import com.example.myapplication.model.User;
@@ -155,37 +156,37 @@ public class InputUtils {
         });
     }
 
-    public void doubleInputs(Context context, String matchID, String userID, int homeTeamGoals, int awayTeamGoals) {
-        DatabaseReference inputMatchesRef = FirebaseDatabase.getInstance().getReference().child("inputMatches");
+    public void doubleInputs(Context context, String matchdayID,String matchID, String userID, int homeTeamGoals, int awayTeamGoals) {
+        DatabaseReference doubleMatchesRef = FirebaseDatabase.getInstance().getReference().child("doubleMatches");
 
-        //Checking for existing inputs for the same match
-        inputMatchesRef.orderByChild("matchID").equalTo(matchID).addListenerForSingleValueEvent(new ValueEventListener() {
+        //Checking for existing doubled inputs for the same matchday
+        doubleMatchesRef.orderByChild("matchdayID").equalTo(matchdayID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                boolean inputExists = false;
+                boolean doubleExists = false;
 
-                for (DataSnapshot inputSnapshot : dataSnapshot.getChildren()) {
-                    InputMatch existingInputMatch = inputSnapshot.getValue(InputMatch.class);
+                for (DataSnapshot doubleSnapshot : dataSnapshot.getChildren()) {
+                    DoubleMatch existingDoubleMatch = doubleSnapshot.getValue(DoubleMatch.class);
 
-                    if (existingInputMatch != null && existingInputMatch.getUserID().equals(userID) && existingInputMatch.getMatchID().equals(matchID)) {
-                        inputExists = true;
+                    if (existingDoubleMatch != null && existingDoubleMatch.getUserID().equals(userID) && existingDoubleMatch.getMatchdayID().equals(matchdayID)) {
+                        doubleExists = true;
                         break;
                     }
 
                 }
 
-                if (inputExists) {
+                if (doubleExists) {
                     //Alert the users they cannot make anymore predictions for this specific game
-                    Toast.makeText(context, "Deja ati introdus un scor pentru acest meci", Toast.LENGTH_SHORT).show();
-                    Log.d("InputMatch", "There is already an input for this specific match");
+                    Toast.makeText(context, "Deja ati introdus un dublaj pentru aceasta etapa", Toast.LENGTH_SHORT).show();
+                    Log.d("DoubleMatch", "There is already an input double for this specific matchday");
                 } else {
                     //Save the prediction and proceed to calculate their points
-                    InputMatch inputMatch = new InputMatch(userID, matchID, homeTeamGoals, awayTeamGoals);
+                    DoubleMatch doubleMatch = new DoubleMatch(userID, matchdayID, matchID,homeTeamGoals, awayTeamGoals);
 
-                    inputMatchesRef.push()
-                            .setValue(inputMatch)
+                    doubleMatchesRef.push()
+                            .setValue(doubleMatch)
                             .addOnSuccessListener(aVoid -> {
-                                Log.d("Firebase", "InputMatch added successfully");
+                                Log.d("Firebase", "DoubleMatch added successfully");
                                 // Using the matchID, we get all the data from that specific match
                                 DatabaseReference matchesRef = FirebaseDatabase.getInstance().getReference().child("matches");
 
@@ -218,32 +219,32 @@ public class InputUtils {
                                                                         int points = 0;
 
                                                                         //correct result (win, draw, lose)
-                                                                        if (match.getHomeTeamGoals() > match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() > inputMatch.getAwayTeamGoals() ||
-                                                                                match.getHomeTeamGoals() == match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() == inputMatch.getAwayTeamGoals() ||
-                                                                                match.getHomeTeamGoals() < match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() < inputMatch.getAwayTeamGoals()) {
+                                                                        if (match.getHomeTeamGoals() > match.getAwayTeamGoals() && doubleMatch.getHomeTeamGoals() > doubleMatch.getAwayTeamGoals() ||
+                                                                                match.getHomeTeamGoals() == match.getAwayTeamGoals() && doubleMatch.getHomeTeamGoals() == doubleMatch.getAwayTeamGoals() ||
+                                                                                match.getHomeTeamGoals() < match.getAwayTeamGoals() && doubleMatch.getHomeTeamGoals() < doubleMatch.getAwayTeamGoals()) {
                                                                             points += 3;
                                                                         }
                                                                         //correct # of goals scored by the home team
-                                                                        if (match.getHomeTeamGoals() == inputMatch.getHomeTeamGoals()) {
+                                                                        if (match.getHomeTeamGoals() == doubleMatch.getHomeTeamGoals()) {
                                                                             points += 1;
                                                                         }
                                                                         //correct # of goals scored by the away team
-                                                                        if (match.getAwayTeamGoals() == inputMatch.getAwayTeamGoals()) {
+                                                                        if (match.getAwayTeamGoals() == doubleMatch.getAwayTeamGoals()) {
                                                                             points += 1;
                                                                         }
-                                                                        if (match.getHomeTeamGoals() - match.getAwayTeamGoals() == inputMatch.getHomeTeamGoals() - inputMatch.getAwayTeamGoals()) {
+                                                                        if (match.getHomeTeamGoals() - match.getAwayTeamGoals() == doubleMatch.getHomeTeamGoals() - doubleMatch.getAwayTeamGoals()) {
                                                                             points += 1;
                                                                         }
                                                                         //opposite result
-                                                                        if (match.getHomeTeamGoals() > match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() < inputMatch.getAwayTeamGoals() ||
-                                                                                match.getHomeTeamGoals() < match.getAwayTeamGoals() && inputMatch.getHomeTeamGoals() > inputMatch.getAwayTeamGoals()) {
+                                                                        if (match.getHomeTeamGoals() > match.getAwayTeamGoals() && doubleMatch.getHomeTeamGoals() < doubleMatch.getAwayTeamGoals() ||
+                                                                                match.getHomeTeamGoals() < match.getAwayTeamGoals() && doubleMatch.getHomeTeamGoals() > doubleMatch.getAwayTeamGoals()) {
                                                                             points -= 2;
                                                                         }
 
                                                                         points = points * 2;
 
                                                                         // Update user points
-                                                                        Toast.makeText(context, "Ați prezis: " + inputMatch.getHomeTeamGoals() + "-" + inputMatch.getAwayTeamGoals(), Toast.LENGTH_SHORT).show();
+                                                                        Toast.makeText(context, "Ați prezis: " + doubleMatch.getHomeTeamGoals() + "-" + doubleMatch .getAwayTeamGoals(), Toast.LENGTH_SHORT).show();
                                                                         if (points >= 0) {
                                                                             Toast.makeText(context, "(DUBLAJ) Ați primit " + points +
                                                                                     " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
