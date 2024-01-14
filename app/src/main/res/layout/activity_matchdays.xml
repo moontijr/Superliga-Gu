@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,13 +16,13 @@
             android:layout_width="55dp"
             android:layout_height="62dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@id/rules"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/rules"
             android:clickable="true"
+            android:contentDescription="TODO"
             android:onClick="onLogoClick"
-            android:src="@drawable/cupa"
-            android:contentDescription="TODO" />
+            android:src="@drawable/cupa" />
 
         <ImageView
             android:id="@+id/signOutButton"
@@ -41,10 +40,10 @@
             android:id="@+id/rules"
             android:layout_width="55dp"
             android:layout_height="62dp"
-            android:layout_toEndOf="@id/signOutButton"
             android:layout_alignParentTop="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/signOutButton"
             android:clickable="true"
             android:onClick="rules"
             android:src="@drawable/rules_transparent"
@@ -57,17 +56,17 @@
             android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/logoImageView"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
             android:clickable="true"
             android:contentDescription="TODO"
             android:onClick="onGameweek1ButtonClick"
-            android:src="@drawable/incercare_superliga"
             android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            android:background="@android:color/transparent"
-            />
+            android:src="@drawable/incercare_superliga" />
+
 
         <!-- ImageButton 2 -->
         <ImageButton
@@ -75,16 +74,16 @@
             android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton1"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:onClick="onGameweek2ButtonClick"
-            android:src="@drawable/poza_arena"
-            android:contentDescription="TODO"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:onClick="onGameweek2ButtonClick"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poza_arena" />
 
         <!-- ImageButton 3 -->
         <ImageButton
@@ -92,16 +91,16 @@
             android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton2"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:onClick="onGameweek3ButtonClick"
-            android:src="@drawable/poza_arena"
-            android:contentDescription="TODO"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:onClick="onGameweek3ButtonClick"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poza_arena" />
 
         <!-- ImageButton 4 -->
         <ImageButton
@@ -109,16 +108,16 @@
             android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton3"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:onClick="onGameweek4ButtonClick"
-            android:src="@drawable/poza_arena"
-            android:contentDescription="TODO"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:onClick="onGameweek4ButtonClick"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poza_arena" />
 
         <!-- ImageButton 5 -->
         <ImageButton
@@ -126,16 +125,16 @@
             android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton4"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:onClick="onGameweek5ButtonClick"
-            android:src="@drawable/poza_arena"
-            android:contentDescription="TODO"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:onClick="onGameweek5ButtonClick"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poza_arena" />
 
         <!-- ImageButton 6 -->
         <ImageButton
@@ -143,16 +142,16 @@
             android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton5"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:onClick="onGameweek6ButtonClick"
-            android:src="@drawable/poza_arena"
-            android:contentDescription="TODO"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:onClick="onGameweek6ButtonClick"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poza_arena" />
 
         <!-- ImageButton 7 -->
         <ImageButton
@@ -160,16 +159,16 @@
             android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton6"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:onClick="onGameweek7ButtonClick"
-            android:src="@drawable/poza_arena"
-            android:contentDescription="TODO"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:onClick="onGameweek7ButtonClick"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poza_arena" />
 
         <!-- ImageButton 8 -->
         <ImageButton
@@ -177,16 +176,16 @@
             android:layout_width="330dp"
             android:layout_height="74dp"
             android:layout_below="@id/gameweekButton7"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:onClick="onGameweek8ButtonClick"
-            android:src="@drawable/poza_arena"
-            android:contentDescription="TODO"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:onClick="onGameweek8ButtonClick"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poza_arena" />
 
     </RelativeLayout>
 
