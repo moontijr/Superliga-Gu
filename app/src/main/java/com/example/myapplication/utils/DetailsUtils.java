@@ -323,6 +323,7 @@ public class DetailsUtils {
 
                     if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
                         setPointsTo3();
+                        entryExists=true;
                     }
                     else {
                     }
@@ -355,6 +356,7 @@ public class DetailsUtils {
 
                     if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
                         setPointsTo5();
+                        entryExists = true;
                     }
                 }
 
