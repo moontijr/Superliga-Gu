@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DetailsUtils {
 
@@ -313,6 +314,8 @@ public class DetailsUtils {
     public static void checkAndSetPoints(String gameId, String playerId,Context context) {
         DatabaseReference potmInfoRef = FirebaseDatabase.getInstance().getReference().child("potm_info");
 
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
         potmInfoRef.orderByChild("gameId").equalTo(gameId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -321,8 +324,8 @@ public class DetailsUtils {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     POTMInfo potmInfo = snapshot.getValue(POTMInfo.class);
 
-                    if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
-                        setPointsTo3();
+                    if (potmInfo != null&& Objects.equals(potmInfo.getUserId(), currentUser.getEmail()) && potmInfo.getPlayerId().equals(playerId)) {
+                        Log.e("D","IF-UL ce seteaza ENTRY");
                         entryExists=true;
                     }
                     else {
@@ -330,8 +333,11 @@ public class DetailsUtils {
                 }
 
                 if (entryExists) {
+                    Log.e("D","IF-UL DIN ENTRY");
                     ToastUtils.showToast("Felicitări, ați primit 3 puncte!",context);
+                    setPointsTo3();
                 } else {
+                    Log.e("D","ELSE-UL DIN ENTRY");
                     ToastUtils.showToast("Ghinion, încercați la meciul următor!",context);
                 }
             }
@@ -346,6 +352,7 @@ public class DetailsUtils {
     public static void checkAndSetPointsForPotgw(String gameweekId, String playerId,Context context) {
         DatabaseReference potmInfoRef = FirebaseDatabase.getInstance().getReference().child("potgw_info");
 
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         potmInfoRef.orderByChild("gameweekId").equalTo(gameweekId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -354,16 +361,18 @@ public class DetailsUtils {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     POTGWInfo potmInfo = snapshot.getValue(POTGWInfo.class);
 
-                    if (potmInfo != null && potmInfo.getPlayerId().equals(playerId)) {
+                    if (potmInfo != null && potmInfo.getUserId().equals(currentUser.getEmail()) && potmInfo.getPlayerId().equals(playerId)) {
+                        Log.e("D","If-ul unde setez entry");
                         setPointsTo5();
                         entryExists = true;
                     }
                 }
 
                 if (entryExists) {
-                    setPointsTo5();
+                    Log.e("D","If-ul din entry");
                     ToastUtils.showToast("Felicitări, ați primit 5 puncte!",context);
-                } else {
+                    Log.e("D","If-ul din entry");
+                } else {Log.e("D","Else-ul din entry");
                     ToastUtils.showToast("Ghinion, încercați la etapa următoare!",context);
                 }
             }

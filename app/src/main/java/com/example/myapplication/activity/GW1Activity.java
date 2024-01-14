@@ -55,7 +55,7 @@ public class GW1Activity extends AppCompatActivity {
 
 
     private void retrieveAndDisplayGames() {
-        gamesRef.addValueEventListener(new ValueEventListener() {
+        gamesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
             @Override

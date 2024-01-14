@@ -62,11 +62,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         firebaseAuth = FirebaseAuth.getInstance();
-        if (firebaseAuth.getCurrentUser() != null) {
-            addPlayersToDb();
-            startActivity(new Intent(getApplicationContext(), MatchdaysActivity.class));
-            finish();
-        }
 
         Button registerPopupButton = findViewById(R.id.registerPopupButton);
         registerPopupButton.setOnClickListener(new View.OnClickListener() {
