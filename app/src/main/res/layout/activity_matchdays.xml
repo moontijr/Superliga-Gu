@@ -65,7 +65,7 @@
             android:contentDescription="TODO"
             android:onClick="onGameweek1ButtonClick"
             android:scaleType="centerCrop"
-            android:src="@drawable/incercare_superliga" />
+            android:src="@drawable/untitled_design" />
 
 
         <!-- ImageButton 2 -->
@@ -83,7 +83,7 @@
             android:contentDescription="TODO"
             android:onClick="onGameweek2ButtonClick"
             android:scaleType="centerCrop"
-            android:src="@drawable/poza_arena" />
+            android:src="@drawable/untitled_design_1_" />
 
         <!-- ImageButton 3 -->
         <ImageButton
@@ -100,7 +100,7 @@
             android:contentDescription="TODO"
             android:onClick="onGameweek3ButtonClick"
             android:scaleType="centerCrop"
-            android:src="@drawable/poza_arena" />
+            android:src="@drawable/untitled_design_2_" />
 
         <!-- ImageButton 4 -->
         <ImageButton
@@ -117,7 +117,7 @@
             android:contentDescription="TODO"
             android:onClick="onGameweek4ButtonClick"
             android:scaleType="centerCrop"
-            android:src="@drawable/poza_arena" />
+            android:src="@drawable/untitled_design_3_" />
 
         <!-- ImageButton 5 -->
         <ImageButton
@@ -134,7 +134,7 @@
             android:contentDescription="TODO"
             android:onClick="onGameweek5ButtonClick"
             android:scaleType="centerCrop"
-            android:src="@drawable/poza_arena" />
+            android:src="@drawable/untitled_design_4_" />
 
         <!-- ImageButton 6 -->
         <ImageButton
@@ -151,7 +151,7 @@
             android:contentDescription="TODO"
             android:onClick="onGameweek6ButtonClick"
             android:scaleType="centerCrop"
-            android:src="@drawable/poza_arena" />
+            android:src="@drawable/untitled_design_5_" />
 
         <!-- ImageButton 7 -->
         <ImageButton
@@ -168,7 +168,7 @@
             android:contentDescription="TODO"
             android:onClick="onGameweek7ButtonClick"
             android:scaleType="centerCrop"
-            android:src="@drawable/poza_arena" />
+            android:src="@drawable/untitled_design_6_" />
 
         <!-- ImageButton 8 -->
         <ImageButton
@@ -185,7 +185,7 @@
             android:contentDescription="TODO"
             android:onClick="onGameweek8ButtonClick"
             android:scaleType="centerCrop"
-            android:src="@drawable/poza_arena" />
+            android:src="@drawable/untitled_design_7_" />
 
     </RelativeLayout>
 
