@@ -15,7 +15,7 @@
         android:layout_marginTop="225dp"
         android:layout_marginRight="22dp"
         android:gravity="center"
-        android:hint="Logheaza-te"
+        android:hint="Loghează-te"
         android:onClick="onLoadButtonClick"
         android:textSize="20sp" />
 
@@ -34,7 +34,7 @@
         android:layout_below="@id/idUtilizatorCeva"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"
-        android:text="Super, Te-ai intors!"
+        android:text="Super! Te-ai întors!"
         android:textSize="24sp" />
 
     <EditText
@@ -63,10 +63,11 @@
         android:gravity="center"
         android:hint="Parola"
         android:password="true"
-        android:textSize="20sp" /><![CDATA[
+        android:textSize="20sp" />
+<!--    <![CDATA[-->
 
-    />
+<!--    />-->
 
 
-]]>
+<!--]]>-->
 </RelativeLayout>

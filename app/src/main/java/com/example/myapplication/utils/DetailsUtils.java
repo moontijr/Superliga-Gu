@@ -251,7 +251,7 @@ public class DetailsUtils {
                     });
                 } else {
                     Log.d("POTM", "Entry with the same userId and gameId already exists.");
-                    ToastUtils.showToast("Deja ati facut o predictie pentru acest meci, ne pare rau!",context);
+                    ToastUtils.showToast("Deja ați făcut o predicție pentru acest meci, ne pare rău!",context);
                 }
             }
 
@@ -297,7 +297,7 @@ public class DetailsUtils {
                     });
                 } else {
                     Log.d("POTM", "Entry with the same userId and gameId already exists.");
-                    ToastUtils.showToast("Deja ati facut o predictie pentru acest lucru, ne pare rau",context);
+                    ToastUtils.showToast("Deja ați făcut o predicție pentru acest lucru, ne pare rău",context);
                 }
             }
 
@@ -329,9 +329,9 @@ public class DetailsUtils {
                 }
 
                 if (entryExists) {
-                    ToastUtils.showToast("Felicitari, ai primit 3 puncte!",context);
+                    ToastUtils.showToast("Felicitări, ați primit 3 puncte!",context);
                 } else {
-                    ToastUtils.showToast("Ghinion, incearca la meciul urmator!",context);
+                    ToastUtils.showToast("Ghinion, încercați la meciul următor!",context);
                 }
             }
 
@@ -360,9 +360,9 @@ public class DetailsUtils {
 
                 if (entryExists) {
                     setPointsTo5();
-                    ToastUtils.showToast("Felicitari, ai primit 5 puncte!",context);
+                    ToastUtils.showToast("Felicitări, ați primit 5 puncte!",context);
                 } else {
-                    ToastUtils.showToast("Ghinion, incearca la etapa urmatoare!",context);
+                    ToastUtils.showToast("Ghinion, încercați la etapa următoare!",context);
                 }
             }
 

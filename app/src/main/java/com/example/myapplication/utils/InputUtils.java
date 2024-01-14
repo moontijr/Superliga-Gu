@@ -42,7 +42,7 @@ public class InputUtils {
 
                 if (inputExists) {
                     //Alert the users they cannot make anymore predictions for this specific game
-                    Toast.makeText(context, "Deja ati introdus un scor pentru acest meci", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Deja ați introdus un scor pentru acest meci", Toast.LENGTH_SHORT).show();
                     Log.d("InputMatch", "There is already an input for this specific match");
                 } else {
                     //Save the prediction and proceed to calculate their points
@@ -109,10 +109,10 @@ public class InputUtils {
                                                                         // Update user points
                                                                         Toast.makeText(context, "Ați prezis: " + inputMatch.getHomeTeamGoals() + "-" + inputMatch.getAwayTeamGoals(), Toast.LENGTH_SHORT).show();
                                                                         if(points>=0){
-                                                                            Toast.makeText(context, "Ati primit " + points +
+                                                                            Toast.makeText(context, "Ați primit " + points +
                                                                                     " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
                                                                         }else {
-                                                                            Toast.makeText(context, "Ati pierdut " + points +
+                                                                            Toast.makeText(context, "Ați pierdut " + points +
                                                                                     " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
                                                                         }
                                                                         Log.d("InputMatch", "User collected :" + points + " points");
@@ -177,7 +177,7 @@ public class InputUtils {
 
                 if (doubleExists) {
                     //Alert the users they cannot make anymore predictions for this specific game
-                    Toast.makeText(context, "Deja ati introdus un dublaj pentru aceasta etapa", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Deja ați introdus un dublaj pentru această etapă!", Toast.LENGTH_SHORT).show();
                     Log.d("DoubleMatch", "There is already an input double for this specific matchday");
                 } else {
                     //Save the prediction and proceed to calculate their points

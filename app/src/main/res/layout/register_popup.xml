@@ -100,7 +100,7 @@
         android:layout_marginTop="356dp"
         android:layout_marginRight="22dp"
         android:gravity="center"
-        android:hint="Inregistreaza-te"
+        android:hint="Înregistrează-te"
         android:onClick="onRegisterButtonClick"
         android:textSize="20sp" />
     />

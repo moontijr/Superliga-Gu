@@ -79,7 +79,7 @@ public class LeaderboardActivity extends AppCompatActivity {
                         loggedInUserPoints = user.getPoints();
                         Log.d("DEBUG", "Points for logged-in user: " + loggedInUserPoints);
 
-                        userPointsTextView.setText("Dvs aveti " + loggedInUserPoints + " puncte");
+                        userPointsTextView.setText("Dumneavoastră aveți " + loggedInUserPoints + " puncte");
 
                     }
                 }

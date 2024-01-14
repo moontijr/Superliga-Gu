@@ -1,108 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="350dp"
-    android:layout_height="850dp"
-    android:layout_gravity="center"
-    android:background="@drawable/popupbackground">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/Intro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="125dp"
-        android:layout_marginEnd="16dp"
-        android:text="Cum se acordă punctajul?"
-        android:textSize="24sp" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="350dp"
+        android:layout_height="850dp"
+        android:layout_gravity="center"
+        android:background="@drawable/popupbackground">
 
-    <TextView
-        android:id="@+id/pointsDescription1"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Intro"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="*Scor Posibil*: un rezultat prezis pe baza unui algoritm și a unor rezultate anterioare"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/Intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="125dp"
+            android:layout_marginEnd="16dp"
+            android:text="Cum se acordă punctajul?"
+            android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/pointsDescription2"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/pointsDescription1"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="+3P rezultat corect (victorie gazde / oaspeți sau egal)"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/pointsDescription1"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Intro"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="*Scor Posibil*: un rezultat prezis pe baza unui algoritm și a unor rezultate anterioare"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/pointsDescription2"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pointsDescription1"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="+3P rezultat corect (victorie gazde / oaspeți sau egal)"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
-    <TextView
-        android:id="@+id/pointsDescription3"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/pointsDescription2"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="-2P la rezultat opus (de ex: ați prezis victoria gazdelor, dar au câștigat oaspeții și vice-versa)"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/pointsDescription3"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pointsDescription2"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="-2P la rezultat opus (de ex: ați prezis victoria gazdelor, dar au câștigat oaspeții și vice-versa)"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <TextView
-        android:id="@+id/pointsDescription4"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/pointsDescription3"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="+1P număr corect de goluri înscrise de gazde"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/pointsDescription4"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pointsDescription3"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="+1P număr corect de goluri înscrise de gazde"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <TextView
-        android:id="@+id/pointsDescription5"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/pointsDescription4"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="+1P număr corect de goluri înscrise de oaspeți"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/pointsDescription5"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pointsDescription4"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="+1P număr corect de goluri înscrise de oaspeți"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <TextView
-        android:id="@+id/pointsDescription6"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/pointsDescription5"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="+1P diferență corectă de goluri între echipe"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/pointsDescription6"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pointsDescription5"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="+1P diferență corectă de goluri între echipe"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <TextView
-        android:id="@+id/pointsDescription7"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/pointsDescription6"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="+3P alegerea corectă a jucătorului meciului"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/pointsDescription7"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pointsDescription6"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="+3P alegerea corectă a jucătorului meciului"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <TextView
-        android:id="@+id/pointsDescription8"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/pointsDescription7"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="+3P alegerea corectă a Superjucătorului Etapei"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/pointsDescription8"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pointsDescription7"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="+5P alegerea corectă a Superjucătorului Etapei"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
