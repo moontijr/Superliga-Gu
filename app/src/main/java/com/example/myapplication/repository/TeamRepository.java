@@ -18,7 +18,6 @@ public class TeamRepository {
         void onFailure(Exception e);
     }
 
-    // Fetch all teams from the "teams" collection
     public void getAllTeams(TeamFetchCallback callback) {
         db.collection("teams")
                 .get()
@@ -36,7 +35,6 @@ public class TeamRepository {
                 });
     }
 
-    // Fetch a specific team by ID
     public void getTeamById(String teamId, TeamFetchCallback callback) {
         DocumentReference teamRef = db.collection("teams").document(teamId);
 

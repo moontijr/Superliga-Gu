@@ -18,7 +18,6 @@ public class UserRepository {
         void onFailure(Exception e);
     }
 
-    // Fetch all users from the "users" collection
     public void getAllUsers(UserFetchCallback callback) {
         db.collection("users")
                 .get()
@@ -36,7 +35,6 @@ public class UserRepository {
                 });
     }
 
-    // Fetch a specific user by UID
     public void getUserByUid(String uid, UserFetchCallback callback) {
         DocumentReference userRef = db.collection("users").document(uid);
 

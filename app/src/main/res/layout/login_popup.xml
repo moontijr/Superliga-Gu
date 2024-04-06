@@ -64,10 +64,5 @@
         android:hint="Parola"
         android:password="true"
         android:textSize="20sp" />
-<!--    <![CDATA[-->
 
-<!--    />-->
-
-
-<!--]]>-->
 </RelativeLayout>

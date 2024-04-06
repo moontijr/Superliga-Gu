@@ -18,7 +18,6 @@ public class PlayerRepository {
         void onFailure(Exception e);
     }
 
-    // Fetch all players from the "players" collection
     public void getAllPlayers(PlayerFetchCallback callback) {
         db.collection("players")
                 .get()
@@ -36,7 +35,6 @@ public class PlayerRepository {
                 });
     }
 
-    // Fetch a specific player by ID
     public void getPlayerById(String playerId, PlayerFetchCallback callback) {
         DocumentReference playerRef = db.collection("players").document(playerId);
 

@@ -374,7 +374,6 @@ public class GW1Activity extends AppCompatActivity {
         EditText editTextFcsb = findViewById(R.id.leftTeamGoals1);
         EditText editTextCfr = findViewById(R.id.rightTeamGoals1);
 
-
         int homeGoals = -1; //convention
         int awayGoals = -1; //convention
 
@@ -403,7 +402,6 @@ public class GW1Activity extends AppCompatActivity {
             InputUtils inputUtils = new InputUtils();
             inputUtils.checkExistingInputs(GW1Activity.this, fcsbCfr.getId(), userId, homeGoals, awayGoals);
         }
-
     }
 
     public void confirmDoubleForFcsbCfr(View view) {

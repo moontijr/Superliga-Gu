@@ -18,7 +18,6 @@ public class MatchRepository {
         void onFailure(Exception e);
     }
 
-    // Fetch all matches from the "matches" collection
     public void getAllMatches(MatchFetchCallback callback) {
         db.collection("matches")
                 .get()
@@ -36,7 +35,6 @@ public class MatchRepository {
                 });
     }
 
-    // Fetch a specific match by ID
     public void getMatchById(String matchId, MatchFetchCallback callback) {
         DocumentReference matchRef = db.collection("games").document(matchId);
 

@@ -143,8 +143,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("Firebase", "User added successfully");
                 })
                 .addOnFailureListener(e -> Log.e("Firebase", "Error adding user: " + e.getMessage()));
-
-
     }
 
     private void showLoginPopupDialog() {
@@ -155,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
         EditText editTextEmail = popupDialog.findViewById(R.id.loginEmail);
         EditText editTextPassword = popupDialog.findViewById(R.id.loginPassword);
         Button loginAction = popupDialog.findViewById(R.id.loginAction);
-
         loginAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,60 +175,58 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "Bine ați revenit!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MatchdaysActivity.class));
-                        }else {
+                        } else {
                             Toast.makeText(MainActivity.this, "Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
         });
-
-
         popupDialog.show();
     }
 
-    private void addPlayersToDb(){
-        Player Coman = new Player("P1","Florinel","Coman","Forward","Romania",4500000,"T1");
-        Player Olaru = new Player("P2","Darius","Olaru","Midfielder","Romania",6000000,"T1");
-        Player Tavi = new Player("P21","Tavi","Popescu","Forward","Romania",2000000,"T1");
-        Player Ngezana = new Player("P22","Syiabonga","Ngezana","Defender","South-Africa",6000000,"T1");
-        Player Sut = new Player("P23","Adrian","Sut","Midfielder","Romania",2250000,"T1");
-        Player Tarnovanu = new Player("P24","Stefan","Tarnovanu","Goalkeeper","Romania",1000000,"T1");
-        Player Baba = new Player("P25","Baba","Alhassan","Midfielder","Romania",800000,"T1");
-        Player Manea = new Player("P3","Cristian","Manea","Defender","Romania",3500000,"T2");
-        Player Birligea = new Player("P4","Daniel","Birligea","Forward","Romania",1000000,"T2");
-        Player Otele = new Player("P26","Philipe","Otele","Forward","Romania",1000000,"T2");
-        Player Tachtsidis = new Player("P27","Panagyotis","Tachtsidis","Midfielder","Romania",1000000,"T2");
-        Player Sava = new Player("P28","Razvan","Sava","Goalkeeper","Romania",1000000,"T2");
-        Player Deac = new Player("P29","Ciprian","Deac","Forward","Romania",1000000,"T2");
-        Player Amzar = new Player("P5","Costin","Amzar","Defender","Romania",4500000,"T3");
-        Player Moura = new Player("P30","Gabriel","Moura","Defender","Romania",4500000,"T3");
-        Player Ghezali = new Player("P31","Lamine","Ghezali","Defender","Romania",4500000,"T3");
-        Player Politic = new Player("P32","Denis","Politic","Defender","Romania",4500000,"T3");
-        Player Golubovic = new Player("P33","Adrian","Golubovic","Defender","Romania",4500000,"T3");
-        Player Grozav = new Player("P34","Gicu","Grozav","Forward","Romania",350000,"T4");
-        Player Budescu = new Player("P35","Constantin","Budescu","Forward","Romania",800000,"T5");
-        Player Ticu = new Player("P36","Valentin","Ticu","Defender","Romania",800000,"T5");
-        Player Papp = new Player("P37","Paul","Papp","Defender","Romania",800000,"T5");
-        Player Jefferson = new Player("P38","Alex","Jefferson","Forward","Brazil",800000,"T5");
-        Player Jair = new Player("P39","Mias","Jair","Forward","Brazil",800000,"T5");
-        Player Niczuly = new Player("P8","Roland","Niczuly","Goalkeeper","Romania",450000,"T6");
-        Player Ciobotariu = new Player("P40","Denis","Ciobotariu","Goalkeeper","Romania",450000,"T6");
-        Player Balasa = new Player("P41","Mihai","Balasa","Goalkeeper","Romania",450000,"T6");
-        Player Stefan = new Player("P42","Florin","Stefan","Goalkeeper","Romania",450000,"T6");
-        Player Junior = new Player("P43","Francisco","Junior","Goalkeeper","Romania",450000,"T6");
-        Player Oroian = new Player("P9","Alexandru","Oroian","Defender","Romania",480000,"T7");
-        Player Phelipe = new Player("P10","Luis","Phelipe","Forward","Brazil",452000,"T8");
-        Player Nemec = new Player("P11","Adam","Nemec","Forward","Romania",155000,"T9");
-        Player Ducan = new Player("P12","Razvan","Ducan","Goalkeeper","Romania",250000,"T10");
-        Player Mitrita = new Player("P13","Alexandru","Mitrita","Forward","Romania",250000,"T11");
-        Player Bauza = new Player("P14","Juan","Bauza","Forward","Argentina",220000,"T14");
-        Player Miculescu = new Player("P15","David","Miculescu","Forward","Romania",424000,"T13");
-        Player Nistor = new Player("P16","Dan","Nistor","Midfielder","Romania",390000,"T14");
-        Player Moldovan = new Player("P17","Horatiu","Moldovan","Goalkeeper","Romania",410000,"T15");
-        Player Krasniqi = new Player("P18","Ermal","Krasniqi","Forward","Kosovo",580000,"T16");
-        Player Omrani = new Player("P19","Bilel","Omrani","Forward","France",250000,"T4");
-        Player Mazilu = new Player("P20","Adrian","Mazilu","Forward","Romania",320000,"T5");
+    private void addPlayersToDb() {
+        Player Coman = new Player("P1", "Florinel", "Coman", "Forward", "Romania", 4500000, "T1");
+        Player Olaru = new Player("P2", "Darius", "Olaru", "Midfielder", "Romania", 6000000, "T1");
+        Player Tavi = new Player("P21", "Tavi", "Popescu", "Forward", "Romania", 2000000, "T1");
+        Player Ngezana = new Player("P22", "Syiabonga", "Ngezana", "Defender", "South-Africa", 6000000, "T1");
+        Player Sut = new Player("P23", "Adrian", "Sut", "Midfielder", "Romania", 2250000, "T1");
+        Player Tarnovanu = new Player("P24", "Stefan", "Tarnovanu", "Goalkeeper", "Romania", 1000000, "T1");
+        Player Baba = new Player("P25", "Baba", "Alhassan", "Midfielder", "Romania", 800000, "T1");
+        Player Manea = new Player("P3", "Cristian", "Manea", "Defender", "Romania", 3500000, "T2");
+        Player Birligea = new Player("P4", "Daniel", "Birligea", "Forward", "Romania", 1000000, "T2");
+        Player Otele = new Player("P26", "Philipe", "Otele", "Forward", "Romania", 1000000, "T2");
+        Player Tachtsidis = new Player("P27", "Panagyotis", "Tachtsidis", "Midfielder", "Romania", 1000000, "T2");
+        Player Sava = new Player("P28", "Razvan", "Sava", "Goalkeeper", "Romania", 1000000, "T2");
+        Player Deac = new Player("P29", "Ciprian", "Deac", "Forward", "Romania", 1000000, "T2");
+        Player Amzar = new Player("P5", "Costin", "Amzar", "Defender", "Romania", 4500000, "T3");
+        Player Moura = new Player("P30", "Gabriel", "Moura", "Defender", "Romania", 4500000, "T3");
+        Player Ghezali = new Player("P31", "Lamine", "Ghezali", "Defender", "Romania", 4500000, "T3");
+        Player Politic = new Player("P32", "Denis", "Politic", "Defender", "Romania", 4500000, "T3");
+        Player Golubovic = new Player("P33", "Adrian", "Golubovic", "Defender", "Romania", 4500000, "T3");
+        Player Grozav = new Player("P34", "Gicu", "Grozav", "Forward", "Romania", 350000, "T4");
+        Player Budescu = new Player("P35", "Constantin", "Budescu", "Forward", "Romania", 800000, "T5");
+        Player Ticu = new Player("P36", "Valentin", "Ticu", "Defender", "Romania", 800000, "T5");
+        Player Papp = new Player("P37", "Paul", "Papp", "Defender", "Romania", 800000, "T5");
+        Player Jefferson = new Player("P38", "Alex", "Jefferson", "Forward", "Brazil", 800000, "T5");
+        Player Jair = new Player("P39", "Mias", "Jair", "Forward", "Brazil", 800000, "T5");
+        Player Niczuly = new Player("P8", "Roland", "Niczuly", "Goalkeeper", "Romania", 450000, "T6");
+        Player Ciobotariu = new Player("P40", "Denis", "Ciobotariu", "Goalkeeper", "Romania", 450000, "T6");
+        Player Balasa = new Player("P41", "Mihai", "Balasa", "Goalkeeper", "Romania", 450000, "T6");
+        Player Stefan = new Player("P42", "Florin", "Stefan", "Goalkeeper", "Romania", 450000, "T6");
+        Player Junior = new Player("P43", "Francisco", "Junior", "Goalkeeper", "Romania", 450000, "T6");
+        Player Oroian = new Player("P9", "Alexandru", "Oroian", "Defender", "Romania", 480000, "T7");
+        Player Phelipe = new Player("P10", "Luis", "Phelipe", "Forward", "Brazil", 452000, "T8");
+        Player Nemec = new Player("P11", "Adam", "Nemec", "Forward", "Romania", 155000, "T9");
+        Player Ducan = new Player("P12", "Razvan", "Ducan", "Goalkeeper", "Romania", 250000, "T10");
+        Player Mitrita = new Player("P13", "Alexandru", "Mitrita", "Forward", "Romania", 250000, "T11");
+        Player Bauza = new Player("P14", "Juan", "Bauza", "Forward", "Argentina", 220000, "T14");
+        Player Miculescu = new Player("P15", "David", "Miculescu", "Forward", "Romania", 424000, "T13");
+        Player Nistor = new Player("P16", "Dan", "Nistor", "Midfielder", "Romania", 390000, "T14");
+        Player Moldovan = new Player("P17", "Horatiu", "Moldovan", "Goalkeeper", "Romania", 410000, "T15");
+        Player Krasniqi = new Player("P18", "Ermal", "Krasniqi", "Forward", "Kosovo", 580000, "T16");
+        Player Omrani = new Player("P19", "Bilel", "Omrani", "Forward", "France", 250000, "T4");
+        Player Mazilu = new Player("P20", "Adrian", "Mazilu", "Forward", "Romania", 320000, "T5");
         addPlayersToDatabase(Coman);
         addPlayersToDatabase(Olaru);
         addPlayersToDatabase(Manea);
@@ -276,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void addPlayersToDatabase(Player player){
+    private void addPlayersToDatabase(Player player) {
         playersDatabase.child(player.getId()).setValue(player)
                 .addOnSuccessListener(aVoid -> {
                     Log.d("Firebase", "Team " + player.getFirstName() + " added successfully");

@@ -3,6 +3,5 @@
     android:layout_height="match_parent"
     android:background="#FF0000">
 
-    <!-- Add your other UI elements here if needed -->
 
 </RelativeLayout>
