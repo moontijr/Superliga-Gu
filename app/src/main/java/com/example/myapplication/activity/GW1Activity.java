@@ -1,5 +1,6 @@
 package com.example.myapplication.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.example.myapplication.model.User;
 import com.example.myapplication.utils.DetailsUtils;
 import com.example.myapplication.utils.FirebaseMatchUtils;
 import com.example.myapplication.utils.InputUtils;
+import com.example.myapplication.utils.ToastUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GW1Activity extends AppCompatActivity {
+
+
 
     private DatabaseReference mDatabase;
     private DatabaseReference gamesRef;
@@ -366,7 +370,7 @@ public class GW1Activity extends AppCompatActivity {
     }
 
 
-    public void confirmPredictionForFcsbCfr(View view) {
+    public void confirmPredictionForFcsbCfr(View view, Context context) {
         //test match
         Match fcsbCfr = new Match("MSteCfr", "T1", "T2", 1, 1, "Demo1");
         addMatchToDatabase(fcsbCfr);
@@ -389,8 +393,10 @@ public class GW1Activity extends AppCompatActivity {
         if (homeGoals == -1 || awayGoals == -1) {
             if (homeGoals == -1) {
                 editTextFcsb.setError("Enter a number of goals for the home team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa gazda!",context);
             }
             if (awayGoals == -1) {
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
                 editTextCfr.setError("Enter a number of goals for the away team");
             }
             return;
@@ -404,7 +410,7 @@ public class GW1Activity extends AppCompatActivity {
         }
     }
 
-    public void confirmDoubleForFcsbCfr(View view) {
+    public void confirmDoubleForFcsbCfr(View view, Context context) {
         //test match
         Match fcsbCfr = new Match("MSteCfr", "T1", "T2", 1, 1, "Demo1");
         addMatchToDatabase(fcsbCfr);
@@ -428,9 +434,11 @@ public class GW1Activity extends AppCompatActivity {
         if (homeGoals == -1 || awayGoals == -1) {
             if (homeGoals == -1) {
                 editTextFcsb.setError("Enter a number of goals for the home team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa gazda!",context);
             }
             if (awayGoals == -1) {
                 editTextCfr.setError("Enter a number of goals for the away team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
             }
             return;
         }
@@ -444,7 +452,7 @@ public class GW1Activity extends AppCompatActivity {
 
     }
 
-    public void confirmPredictionForBotosaniCsu(View view) {
+    public void confirmPredictionForBotosaniCsu(View view, Context context) {
         //test match
         Match botCsu = new Match("MBotCsu", "T10", "T11", 1, 3, "Demo1");
         addMatchToDatabase(botCsu);
@@ -467,9 +475,11 @@ public class GW1Activity extends AppCompatActivity {
         //Checking if the user entered a number for both teams
         if (homeGoals == -1 || awayGoals == -1) {
             if (homeGoals == -1) {
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa gazda!",context);
                 editTextBot.setError("Enter a number of goals for the home team");
             }
             if (awayGoals == -1) {
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
                 editTextCsu.setError("Enter a number of goals for the away team");
             }
             return;
@@ -483,7 +493,7 @@ public class GW1Activity extends AppCompatActivity {
         }
     }
 
-    public void confirmDoubleForBotCsu(View view) {
+    public void confirmDoubleForBotCsu(View view, Context context) {
         //test match
         Match botCsu = new Match("MBotCsu", "T10", "T11", 1, 3, "Demo1");
         addMatchToDatabase(botCsu);
@@ -507,9 +517,11 @@ public class GW1Activity extends AppCompatActivity {
         if (homeGoals == -1 || awayGoals == -1) {
             if (homeGoals == -1) {
                 editTextBot.setError("Enter a number of goals for the home team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa gazda!",context);
             }
             if (awayGoals == -1) {
                 editTextCsu.setError("Enter a number of goals for the away team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
             }
             return;
         }
@@ -522,7 +534,7 @@ public class GW1Activity extends AppCompatActivity {
         }
     }
 
-    public void confirmPredictionForDinPet(View view) {
+    public void confirmPredictionForDinPet(View view, Context context) {
         //test match
         Match dinPet = new Match("MDinPet", "T3", "T4", 1, 2, "Demo1");
         addMatchToDatabase(dinPet);
@@ -545,10 +557,12 @@ public class GW1Activity extends AppCompatActivity {
         //Checking if the user entered a number for both teams
         if (homeGoals == -1 || awayGoals == -1) {
             if (homeGoals == -1) {
-                editTextDin.setError("Enter a number of goals for the home team");
+                //editTextDin.setError("Enter a number of goals for the home team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa gazda!",context);
             }
             if (awayGoals == -1) {
-                editTextPet.setError("Enter a number of goals for the away team");
+                //editTextPet.setError("Enter a number of goals for the away team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
             }
             return;
         }
@@ -561,7 +575,7 @@ public class GW1Activity extends AppCompatActivity {
         }
     }
 
-    public void confirmDoubleForDinPet(View view) {
+    public void confirmDoubleForDinPet(View view, Context context) {
         //test match
         Match dinPet = new Match("MDinPet", "T3", "T4", 1, 2, "Demo1");
         addMatchToDatabase(dinPet);
@@ -585,9 +599,11 @@ public class GW1Activity extends AppCompatActivity {
         if (homeGoals == -1 || awayGoals == -1) {
             if (homeGoals == -1) {
                 editTextDin.setError("Enter a number of goals for the home team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa gazda!",context);
             }
             if (awayGoals == -1) {
                 editTextPet.setError("Enter a number of goals for the away team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
             }
             return;
         }
@@ -600,7 +616,7 @@ public class GW1Activity extends AppCompatActivity {
         }
     }
 
-    public void confirmPredictionForFarOsk(View view) {
+    public void confirmPredictionForFarOsk(View view, Context context) {
         //test match
         Match farOsk = new Match("MFarOsk", "T10", "T11", 3, 0, "Demo1");
         addMatchToDatabase(farOsk);
@@ -624,9 +640,11 @@ public class GW1Activity extends AppCompatActivity {
         if (homeGoals == -1 || awayGoals == -1) {
             if (homeGoals == -1) {
                 editTextFar.setError("Enter a number of goals for the home team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa gazda!",context);
             }
             if (awayGoals == -1) {
                 editTextOsk.setError("Enter a number of goals for the away team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
             }
             return;
         }
@@ -639,7 +657,7 @@ public class GW1Activity extends AppCompatActivity {
         }
     }
 
-    public void confirmDoubleForFarOsk(View view) {
+    public void confirmDoubleForFarOsk(View view, Context context) {
         //test match
         Match farOsk = new Match("MFarOsk", "T10", "T11", 3, 0, "Demo1");
         addMatchToDatabase(farOsk);
@@ -663,9 +681,11 @@ public class GW1Activity extends AppCompatActivity {
         if (homeGoals == -1 || awayGoals == -1) {
             if (homeGoals == -1) {
                 editTextFar.setError("Enter a number of goals for the home team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa gazda!",context);
             }
             if (awayGoals == -1) {
                 editTextOsk.setError("Enter a number of goals for the away team");
+                ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
             }
             return;
         }
