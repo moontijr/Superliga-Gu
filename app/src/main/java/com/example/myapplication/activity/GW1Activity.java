@@ -402,6 +402,11 @@ public class GW1Activity extends AppCompatActivity {
             return;
         }
 
+        //Checking if the user entered a number too big
+        if (homeGoals >= 99 || awayGoals >= 99) {
+            ToastUtils.showToast("Nu puteti introduce un scor asa mare!", context);
+        }
+
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid();
@@ -441,6 +446,11 @@ public class GW1Activity extends AppCompatActivity {
                 ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
             }
             return;
+        }
+
+        //Checking if the user entered a number too big
+        if (homeGoals >= 99 || awayGoals >= 99) {
+            ToastUtils.showToast("Nu puteti introduce un scor asa mare!", context);
         }
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -485,6 +495,11 @@ public class GW1Activity extends AppCompatActivity {
             return;
         }
 
+        //Checking if the user entered a number too big
+        if (homeGoals >= 99 || awayGoals >= 99) {
+            ToastUtils.showToast("Nu puteti introduce un scor asa mare!", context);
+        }
+
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid();
@@ -524,6 +539,11 @@ public class GW1Activity extends AppCompatActivity {
                 ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
             }
             return;
+        }
+
+        //Checking if the user entered a number too big
+        if (homeGoals >= 99 || awayGoals >= 99) {
+            ToastUtils.showToast("Nu puteti introduce un scor asa mare!", context);
         }
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -567,6 +587,11 @@ public class GW1Activity extends AppCompatActivity {
             return;
         }
 
+        //Checking if the user entered a number too big
+        if (homeGoals >= 99 || awayGoals >= 99) {
+            ToastUtils.showToast("Nu puteti introduce un scor asa mare!", context);
+        }
+
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid();
@@ -606,6 +631,11 @@ public class GW1Activity extends AppCompatActivity {
                 ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
             }
             return;
+        }
+
+        //Checking if the user entered a number too big
+        if (homeGoals >= 99 || awayGoals >= 99) {
+            ToastUtils.showToast("Nu puteti introduce un scor asa mare!", context);
         }
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -649,6 +679,11 @@ public class GW1Activity extends AppCompatActivity {
             return;
         }
 
+        //Checking if the user entered a number too big
+        if (homeGoals >= 99 || awayGoals >= 99) {
+            ToastUtils.showToast("Nu puteti introduce un scor asa mare!", context);
+        }
+
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid();
@@ -688,6 +723,11 @@ public class GW1Activity extends AppCompatActivity {
                 ToastUtils.showToast("Nu ati introdus niciun numar pentru echipa oaspete!",context);
             }
             return;
+        }
+
+        //Checking if the user entered a number too big
+        if (homeGoals >= 99 || awayGoals >= 99) {
+            ToastUtils.showToast("Nu puteti introduce un scor asa mare!", context);
         }
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
