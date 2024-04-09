@@ -116,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (username.length() >= 25) {
                     editTextUsername.setError("Username too long");
+                } else if (username.length() < 5) {
+                    editTextUsername.setError("Username too short");
                 }
 
                 firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
