@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,6 +21,7 @@ import com.example.myapplication.repository.MatchRepository;
 import com.example.myapplication.repository.PlayerRepository;
 import com.example.myapplication.repository.TeamRepository;
 import com.example.myapplication.repository.UserRepository;
+import com.example.myapplication.utils.ToastUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -95,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         registerAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Context context = new Context(this);
                 String username = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String familyName = editTextFamilyName.getText().toString();
@@ -109,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(password)) {
                     editTextPassword.setError("Enter a password");
                     return;
+                }
+
+                if (username.length() >= 25) {
+                    editTextUsername.setError("Username too long");
                 }
 
                 firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
