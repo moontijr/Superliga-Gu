@@ -113,6 +113,11 @@ public class MainActivity extends AppCompatActivity {
                     editTextPassword.setError("Enter a password");
                     return;
                 }
+                if (password.length() >= 25) {
+                    editTextPassword.setError("Password too long");
+                } else if (username.length() < 5) {
+                    editTextUsername.setError("Username too short");
+                }
 
                 if (username.length() >= 25) {
                     editTextUsername.setError("Username too long");
