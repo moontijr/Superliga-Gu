@@ -76,6 +76,7 @@ public class InputUtils {
                                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                             for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                                                                 try {
+                                                                    // Making sure the user is valid
                                                                     User currentUser = userSnapshot.getValue(User.class);
                                                                     if (currentUser != null && currentUser.getMailAdress().equals(firebaseUser.getEmail())) {
                                                                         Log.d("Firebase", "User details: " + currentUser.toString());
@@ -108,10 +109,10 @@ public class InputUtils {
 
                                                                         // Update user points
                                                                         Toast.makeText(context, "Ați prezis: " + inputMatch.getHomeTeamGoals() + "-" + inputMatch.getAwayTeamGoals(), Toast.LENGTH_SHORT).show();
-                                                                        if(points>=0){
+                                                                        if (points >= 0) {
                                                                             Toast.makeText(context, "Ați primit " + points +
                                                                                     " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
-                                                                        }else {
+                                                                        } else {
                                                                             Toast.makeText(context, "Ați pierdut " + points +
                                                                                     " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
                                                                         }
@@ -156,7 +157,7 @@ public class InputUtils {
         });
     }
 
-    public void doubleInputs(Context context, String matchdayID,String matchID, String userID, int homeTeamGoals, int awayTeamGoals) {
+    public void doubleInputs(Context context, String matchdayID, String matchID, String userID, int homeTeamGoals, int awayTeamGoals) {
         DatabaseReference doubleMatchesRef = FirebaseDatabase.getInstance().getReference().child("doubleMatches");
 
         //Checking for existing doubled inputs for the same matchday
@@ -181,7 +182,7 @@ public class InputUtils {
                     Log.d("DoubleMatch", "There is already an input double for this specific matchday");
                 } else {
                     //Save the prediction and proceed to calculate their points
-                    DoubleMatch doubleMatch = new DoubleMatch(userID, matchdayID, matchID,homeTeamGoals, awayTeamGoals);
+                    DoubleMatch doubleMatch = new DoubleMatch(userID, matchdayID, matchID, homeTeamGoals, awayTeamGoals);
 
                     doubleMatchesRef.push()
                             .setValue(doubleMatch)
@@ -244,7 +245,7 @@ public class InputUtils {
                                                                         points = points * 2;
 
                                                                         // Update user points
-                                                                        Toast.makeText(context, "Ați prezis: " + doubleMatch.getHomeTeamGoals() + "-" + doubleMatch .getAwayTeamGoals(), Toast.LENGTH_SHORT).show();
+                                                                        Toast.makeText(context, "Ați prezis: " + doubleMatch.getHomeTeamGoals() + "-" + doubleMatch.getAwayTeamGoals(), Toast.LENGTH_SHORT).show();
                                                                         if (points >= 0) {
                                                                             Toast.makeText(context, "(DUBLAJ) Ați primit " + points +
                                                                                     " puncte. Scorul a fost: " + match.getHomeTeamGoals() + "-" + match.getAwayTeamGoals(), Toast.LENGTH_LONG).show();
@@ -293,4 +294,55 @@ public class InputUtils {
         });
     }
 
+
+    /***
+     *
+     * Lab 3 Uvss
+     *
+     */
+    public static int[] calculatePoints(int[] homeTeamGoals, int[] awayTeamGoals, int[] userHomeTeamGoals, int[] userAwayTeamGoals) {
+        /** function used to calculate points for more than one prediction
+         **/
+        int numberOfMatches = homeTeamGoals.length;
+        int[] points = new int[numberOfMatches];
+
+        for (int i = 0; i < numberOfMatches; i++) {
+            //setting up points for every individual match
+            int matchPoints = 0;
+
+            //retrieving the scores for each match
+            int homeGoals = homeTeamGoals[i];
+            int awayGoals = awayTeamGoals[i];
+            int userHomeGoals = userHomeTeamGoals[i];
+            int userAwayGoals = userAwayTeamGoals[i];
+
+            //correct result (win, draw, lose)
+            if ((homeGoals > awayGoals && userHomeGoals > userAwayGoals) ||
+                    (homeGoals == awayGoals && userHomeGoals == userAwayGoals) ||
+                    (homeGoals < awayGoals && userHomeGoals < userAwayGoals)) {
+                matchPoints += 3;
+            }
+            //correct # of goals scored by the home team
+            if (homeGoals == userHomeGoals) {
+                matchPoints += 1;
+            }
+            //correct # of goals scored by the away team
+            if (awayGoals == userAwayGoals) {
+                matchPoints += 1;
+            }
+            //correct difference of goals
+            if (homeGoals - awayGoals == userHomeGoals - userAwayGoals) {
+                matchPoints += 1;
+            }
+            //opposite result
+            if ((homeGoals > awayGoals && userHomeGoals < userAwayGoals) ||
+                    (homeGoals < awayGoals && userHomeGoals > userAwayGoals)) {
+                matchPoints -= 2;
+            }
+
+            //assigning points for this match
+            points[i] = matchPoints;
+        }
+        return points;
+    }
 }
